@@ -1,0 +1,26 @@
+site_name: ECE Projekt - 4D Game
+nav:
+  - Home: index.md
+
+repo_url: https://github.com/lufixSch/ECE-Project-4D-Game
+
+theme:
+  name: material
+  language: de
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  palette:
+    - scheme: default
+      primary: light blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: light blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings
