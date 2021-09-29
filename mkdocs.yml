@@ -1,12 +1,15 @@
 site_name: ECE Projekt - 4D Game
 nav:
   - Home: index.md
+  - Coding Style:
+      - C++: coding-style/cpp.md
+      - Python: coding-style/python.md
 
 repo_url: https://github.com/lufixSch/ECE-Project-4D-Game
 
 theme:
   name: material
-  language: de
+  language: en
   logo: assets/logo.png
   favicon: assets/logo.png
   palette:
@@ -24,3 +27,7 @@ theme:
 plugins:
   - search
   - mkdocstrings
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
