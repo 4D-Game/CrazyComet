@@ -4,14 +4,22 @@ nav:
   - Coding Style:
       - C++: coding-style/cpp.md
       - Python: coding-style/python.md
+      - GIT: coding-style/git.md
+  - Code References:
+      - Streamer: https://4d-game.github.io/Streamer/
+      - Controller: https://4d-game.github.io/Controller/
+      - Watcherstream: https://4d-game.github.io/Watcherstream/
 
-repo_url: https://github.com/lufixSch/ECE-Project-4D-Game
+repo_url: https://github.com/4D-Game/4D-Game.github.io
 
 theme:
   name: material
   language: en
   logo: assets/logo.png
   favicon: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.top
   palette:
     - scheme: default
       primary: light blue
@@ -26,7 +34,6 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings
 
 markdown_extensions:
   - pymdownx.highlight
