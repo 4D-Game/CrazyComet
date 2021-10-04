@@ -1,4 +1,6 @@
 site_name: Code References - Controller
+site_url: https://4d-game.github.io/Streamer
+
 nav:
   - Home: https://4d-game.github.io
   - Coding Style: https://4d-game.github.io/coding-style/cpp/
