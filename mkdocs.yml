@@ -3,7 +3,8 @@ nav:
   - Home: https://4d-game.github.io
   - Coding Style: https://4d-game.github.io/coding-style/cpp/
   - Code References:
-      Streamer: index.md
+      Streamer:
+        - Setup: index.md
       Controller: https://4d-game.github.io/Controller/
       Watcherstream: https://4d-game.github.io/Watcherstream/
 

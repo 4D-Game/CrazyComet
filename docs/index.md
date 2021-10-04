@@ -1,17 +1,32 @@
-# Welcome to MkDocs
+# Streamer Setup
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+## Development
 
-## Commands
+To write code and generate the documentation you need to install the packages listed in `requirements.dev.txt` with `pip`
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+```bash
+pip install -r requirements.dev.txt
+```
 
-## Project layout
+### Documentation
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+The Documentation is generated with the help of [mkdocstrings](https://mkdocstrings.github.io/#). To implement a module, class or function into your documentation you have to reference it as follows:
+
+```md
+::: library.module
+
+::: library.module.class
+
+::: library.module.function
+```
+
+## On Device
+
+For the usage on Device the packages listed in `requirements.txt` should be installed:
+
+```bash
+pip install -r requirements.txt
+```
+
+Next setup the controller service with `scripts/systemd-setup`
+> <span style="color:orange">Warning! </span> This will replace the `controller.service` from the Surrogate SDK
