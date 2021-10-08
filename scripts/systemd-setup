@@ -6,8 +6,8 @@ fi
 
 SCRIPT_PATH=$(dirname `which $0`)
 
-echo "copying controller-rpi.service to /usr/lib/systemd/system/controller.service"
-sudo cp $SCRIPT_PATH/controller.service /usr/lib/systemd/system/controller.service
+echo "copying controller.service to /usr/lib/systemd/system/controller.service"
+sudo cp $SCRIPT_PATH/../controller.service /usr/lib/systemd/system/controller.service
 
 echo "restarting systemd daemon"
 sudo systemctl daemon-reload

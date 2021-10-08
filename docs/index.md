@@ -28,5 +28,12 @@ For the usage on Device the packages listed in `requirements.txt` should be inst
 pip install -r requirements.txt
 ```
 
-Next setup the controller service with `scripts/systemd-setup`
-> <span style="color:orange">Warning! </span> This will replace the `controller.service` from the Surrogate SDK
+Next run `scripts/generate-config` to generate a streamerconfiguration with your gametoken and a device ID at `./srtg.toml`
+
+To activate/update the streamerconfiguration on your device run `scripts/streamer-setup
+!!! warning
+    This will replace the `/etc/srtg/srtg.toml` from the Surrogate SDK
+
+Next setup the controller service with `scripts/setup`
+!!! warning
+    This will replace the `controller.service` from the Surrogate SDK
