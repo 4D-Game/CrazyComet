@@ -34,6 +34,6 @@ To activate/update the streamerconfiguration on your device run `scripts/streame
 !!! warning
     This will replace the `/etc/srtg/srtg.toml` from the Surrogate SDK
 
-Next setup the controller service with `scripts/setup`
+Finally setup the controller service with `scripts/systemd-setup`
 !!! warning
     This will replace the `controller.service` from the Surrogate SDK
