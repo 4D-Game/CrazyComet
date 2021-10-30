@@ -35,7 +35,9 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings
+  - mkdocstrings:
+      watch:
+        - src
 
 markdown_extensions:
   - admonition
