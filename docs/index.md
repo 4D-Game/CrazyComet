@@ -11,7 +11,10 @@ Das Spiel ist für maximal 8 Personen ausgelegt und dauert Pro Runde <x> Minuten
 ## **Erweiterungen**
 
 Um den Spielspaß zu erhöhen und das ganze Spiel dynamischer zu gestalten können zwei sich drehende Objekte verwendet werden. 
+
 Die Geschwindigkeit des Objekts wird während des Spiels verändert. Diese wird im fortlaufenden Spiel schneller.
+
 PowerUps: Trifft der Spieler das Objekt <x> hintereinander bekommt dieses Spiel für <y> Sekunden die doppelte Punkte Anzahl für jeden Treffer.
+
 Je nachdem wie gut das Objekt getroffen wurde, bekommt der Spieler unterschiedlich viele Punkte (Sensor empfangt unterschiedlich starke Signale je nachdem in welchem Winkel die strahlen reflektiert werden).
 
