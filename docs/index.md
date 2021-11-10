@@ -1,4 +1,4 @@
-# **Game-Concept of "Crazy-Comet"**
+# **Game-Concept of "Cooler Spielname"**
 
 ## **Grundprinzip**
 
