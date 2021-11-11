@@ -1,5 +1,5 @@
 """
-Created: 26.04.21
+Created: 26.10.21
 by: Lukas Schüttler
 
 Define Game class
@@ -13,6 +13,7 @@ sys.path.insert(1, os.path.join(os.path.dirname(
 
 from surrortg.inputs import Directions, Joystick
 from surrortg import Game
+import mqtt
 
 
 class LoopinLouie(Game):
@@ -71,3 +72,9 @@ class LoopinLouie(Game):
             reason: reason for the exit (see [docs.surrogate.tv](https://docs.surrogate.tv/modules/surrortg.html#module-surrortg.game) for exitcodes)
             exception: Exception that caused the exit
         """
+        if exception:
+            mqtt.client.publish('status/logging', {"seat": None, "severity": "warning", "message": f"Exited game with exeption {exception}"})
+        else:
+            mqtt.client.publish('status/logging', {"seat": None, "severity": "info", "message": f"Exit game with reason: {reason}"})
+
+        mqtt.client.disconnect()
