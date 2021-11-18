@@ -7,6 +7,7 @@ nav:
   - Code References:
       Streamer:
         - Setup: index.md
+        - SDK: sdk/index.md
       Controller: https://4d-game.github.io/Controller/
       Watcherstream: https://4d-game.github.io/Watcherstream/
 
@@ -22,25 +23,35 @@ theme:
     - navigation.tabs
     - navigation.top
   palette:
-    - scheme: default
-      primary: light blue
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+    # - scheme: default
+    #   primary: light blue
+    #   toggle:
+    #     icon: material/toggle-switch-off-outline
+    #     name: Switch to dark mode
     - scheme: slate
       primary: light blue
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+      # toggle:
+      #   icon: material/toggle-switch
+      #   name: Switch to light mode
 
 plugins:
   - search
   - mkdocstrings:
       watch:
         - src
+  - mermaid2:
+      arguments:
+        theme: |
+          ^(JSON.parse(window.localStorage.getItem('/.__palette')).index == 1) ? 'dark' : 'light'
 
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - attr_list
+  - md_in_html
