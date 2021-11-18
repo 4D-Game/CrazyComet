@@ -41,8 +41,7 @@ plugins:
         - src
   - mermaid2:
       arguments:
-        theme: |
-          ^(JSON.parse(window.localStorage.getItem('/.__palette')).index == 1) ? 'dark' : 'light'
+        theme: 'dark'
 
 markdown_extensions:
   - admonition
