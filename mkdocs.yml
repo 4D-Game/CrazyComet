@@ -5,11 +5,10 @@ nav:
   - Home: https://4d-game.github.io
   - Coding Style: https://4d-game.github.io/coding-style/cpp/
   - Code References:
-      Streamer:
+      Controller:
         - Setup: index.md
         - SDK: sdk/index.md
-      Controller: https://4d-game.github.io/Controller/
-      Watcherstream: https://4d-game.github.io/Watcherstream/
+      Gamecontrol: https://4d-game.github.io/Watcherstream/
 
 repo_url: https://github.com/4D-Game/Streamer
 repo_name: 4D-Game/Streamer
