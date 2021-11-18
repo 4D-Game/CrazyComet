@@ -1,4 +1,4 @@
-# Streamer Setup
+# Controller Setup
 
 ## Development
 

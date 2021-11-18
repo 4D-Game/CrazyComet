@@ -8,7 +8,7 @@ nav:
       Controller:
         - Setup: index.md
         - SDK: sdk/index.md
-      Gamecontrol: https://4d-game.github.io/Watcherstream/
+      Gamecontrol: https://4d-game.github.io/Gamecontrol/
 
 repo_url: https://github.com/4D-Game/Streamer
 repo_name: 4D-Game/Streamer
