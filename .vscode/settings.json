@@ -17,6 +17,5 @@
     "--max-line-length=180"
   ],
   "python.formatting.provider": "autopep8",
-  "python.formatting.autopep8Args": ["--max-line-length=180", "--ignore=E402"],
-  "python.analysis.extraPaths": ["./lib/surrortg-sdk", "src"]
+  "python.formatting.autopep8Args": ["--max-line-length=180", "--ignore=E402"]
 }
