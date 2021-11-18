@@ -6,9 +6,8 @@ nav:
       - Python: coding-style/python.md
       - GIT: coding-style/git.md
   - Code References:
-      - Streamer: https://4d-game.github.io/Streamer/
       - Controller: https://4d-game.github.io/Controller/
-      - Watcherstream: https://4d-game.github.io/Watcherstream/
+      - Gamecontrol: https://4d-game.github.io/Gamecontrol/
 
 repo_url: https://github.com/4D-Game/4D-Game.github.io
 repo_name: '4D-Game/Dokumentation'
