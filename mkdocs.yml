@@ -7,7 +7,9 @@ nav:
   - Code References:
       Controller:
         - Setup: index.md
-        - SDK: sdk/index.md
+        - SDK:
+            Structure: sdk/index.md
+            Key Maps: sdk/key-maps.md
       Gamecontrol: https://4d-game.github.io/Watcherstream/
 
 repo_url: https://github.com/4D-Game/Streamer
