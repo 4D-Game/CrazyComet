@@ -11,6 +11,9 @@ nav:
             Structure: sdk/index.md
             Key Maps: sdk/key-maps.md
             Config File: sdk/config-file.md
+            Code References:
+              - Game: sdk/code-references/game.md
+              - GameIO: sdk/code-references/game-io.md
       Gamecontrol: https://4d-game.github.io/Watcherstream/
 
 repo_url: https://github.com/4D-Game/Controller
@@ -40,6 +43,7 @@ plugins:
   - search
   - mkdocstrings:
       watch:
+        - lib/gamecontrol_sdk
         - src
   - mermaid2:
       arguments:
