@@ -1,5 +1,5 @@
 site_name: Code References - Controller
-site_url: https://4d-game.github.io/Streamer
+site_url: https://4d-game.github.io/Controller
 
 nav:
   - Home: https://4d-game.github.io
@@ -7,13 +7,14 @@ nav:
   - Code References:
       Controller:
         - Setup: index.md
-        - SDK:
+        - Game SDK:
             Structure: sdk/index.md
             Key Maps: sdk/key-maps.md
+            Config File: sdk/config-file.md
       Gamecontrol: https://4d-game.github.io/Watcherstream/
 
-repo_url: https://github.com/4D-Game/Streamer
-repo_name: 4D-Game/Streamer
+repo_url: https://github.com/4D-Game/Controller
+repo_name: 4D-Game/Controller
 
 theme:
   name: material

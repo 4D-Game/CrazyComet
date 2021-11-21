@@ -67,11 +67,49 @@ classDiagram
   class Game{
     +list controls
     +dict config
+    -evdev.InputDevice input_dev
+    -bool is_running
+    -GameIO game_io
+    +GameIO game_io
     +on_init()
+    +on_pregame()
     +on_start()
     +on_end()
+    -ctl_sub(dict: ctl_conf)
+    -game_io_sub(dict: mqtt_conf)
+    -run(str conf_path)
     +run(str conf_path, int log_level)
   }
+
+  class LogLevel~enum.Enum~{
+    +CRITICAL = 50
+    +ERROR = 40
+    +WARNING = 30
+    +INFO = 20
+    +DEBUG = 10
+    +NOTSET = 0
+  }
+  Game ..> LogLevel
+
+  class GameIO{
+    +asyncio_mqtt.Client client
+    +__init__(dict mqtt_conf)
+    +subscribe()
+    +publish(str topic, dict payload)
+    +ready(int seat)
+    +score(int score, int seat)
+  }
+  Game ..> GameIO
+
+
+  class GameState~enum.Enum~{
+    IDLE = "idle"
+    START = "start"
+    RUN = "run"
+    END = "end"
+  }
+  GameIO ..> GameState
+  Game ..> GameState
 ```
 
 ### MQTT Communication
