@@ -8,10 +8,8 @@ sudo apt upgrade -y
 echo ""
 
 echo "Setup Shell environment --------------------------------------------------"
-touch ~/.bash_profile
-echo "export PYTHONPATH=$SCRIPT_PATH/../src" >> ~/.bash_profile
-echo "export PATH=/home/$USER/.local/bin:$PATH"
-source ~/.bash_profile
+echo "export PYTHONPATH=$SCRIPT_PATH/../src" >> ~/.profile
+source ~/.profile
 echo ""
 
 # Install XBox controller support

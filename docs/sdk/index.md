@@ -75,8 +75,8 @@ classDiagram
     +on_pregame()
     +on_start()
     +on_end()
-    -ctl_sub(dict: ctl_conf)
-    -game_io_sub(dict: mqtt_conf)
+    -ctl_sub()
+    -game_io_sub()
     -run(str conf_path)
     +run(str conf_path, int log_level)
   }
@@ -94,6 +94,7 @@ classDiagram
   class GameIO{
     +asyncio_mqtt.Client client
     +__init__(dict mqtt_conf)
+    +connect()
     +subscribe()
     +publish(str topic, dict payload)
     +ready(int seat)

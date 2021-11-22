@@ -1,3 +1,5 @@
+import asyncio
+from json.decoder import JSONDecodeError
 from typing import Any, Callable
 from paho.mqtt.client import MQTTMessage
 from asyncio_mqtt import Client, MqttError
@@ -37,12 +39,16 @@ class GameIO:
 
         self.client = Client(self._ip, self._port, username=self._uname, password=self._passwd)
 
+    async def connect(self):
+        """
+            Connect to MQTT client
+        """
+        await self.client.connect()
+
     async def subscribe(self):
         """
             Subscribe to the gamestatus published by the gamecontrol
         """
-
-        await self.client.connect()
 
         topics = "status/game"
 
@@ -50,17 +56,21 @@ class GameIO:
             await self.client.subscribe(topics)
             async for msg in messages:
                 msg: MQTTMessage = msg
-                data = json.loads(msg.payload)
-                mode = data['mode'] if 'mode' in data else 'idle'
 
-                game_state = GameState.IDLE
-                if mode == 'start':
-                    game_state = GameState.START
-                elif mode == 'run':
-                    game_state = GameState.RUN
-                elif mode == 'end':
-                    game_state = GameState.END
-                yield game_state
+                try:
+                    data = json.loads(msg.payload)
+                    mode = data['mode'] if 'mode' in data else 'idle'
+
+                    game_state = GameState.IDLE
+                    if mode == 'start':
+                        game_state = GameState.START
+                    elif mode == 'run':
+                        game_state = GameState.RUN
+                    elif mode == 'end':
+                        game_state = GameState.END
+                    yield game_state
+                except JSONDecodeError:
+                    logging.warning("Got MQTT message with wrong format")
 
     async def publish(self, topic: str, payload: dict):
         """
@@ -68,6 +78,7 @@ class GameIO:
         """
 
         try:
+            logging.debug("Publish to: %s with %s", topic, payload)
             await self.client.publish(topic, json.dumps(payload))
         except TypeError:
             logging.error("MQTT Payload is not JSON serializable")

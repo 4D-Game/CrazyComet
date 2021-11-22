@@ -3,6 +3,8 @@ import enum
 import logging
 from typing import Any, MutableMapping, Type
 
+from asyncio_mqtt.error import MqttError
+
 from evdev import InputDevice, categorize, ecodes
 import toml
 
@@ -22,12 +24,16 @@ class LogLevel(enum.Enum):
     NOTSET = 0
 
 
+class ControllerNotFoundError(FileNotFoundError):
+    pass
+
+
 class Game:
     """
         Class to control the whole game. Inherit from this class and call `run()` to start your game
     """
 
-    controls: list()
+    controls: list
     config: MutableMapping[str, Any]
     _input_dev: InputDevice
     _is_running = False
@@ -83,59 +89,70 @@ class Game:
         if err:
             logging.error(err)
 
-    async def _ctl_sub(self, ctl_conf: dict):
+    async def _ctl_sub(self):
         """
             Subscribe to gamepad inputs
-
-            Arguments:
-                ctl_conf: Gamepad configuration
         """
-
-        self._input_dev = InputDevice(ctl_conf['input_device'])
-
         async for ev in self._input_dev.async_read_loop():
             logging.info("CODE: %d, \tVALUE %d", ev.code, ev.value)
 
-    async def _game_io_sub(self, mqtt_conf: dict):
+    async def _game_io_sub(self):
         """
             Subscribe to changes of the game state
-
-            Arguments:
-                mqtt_conf: GameIO configuration
         """
-        self._game_io = GameIO(mqtt_conf)
-
         async for game_state in self._game_io.subscribe():
+            logging.debug("Got Gamestate %s", game_state)
+
             if game_state == GameState.START:
                 await self.on_pregame()
+                asyncio.create_task(self._game_io.ready(self.config['seat']))
             elif game_state == GameState.RUN:
                 await self.on_start()
             elif game_state == GameState.END:
                 await self.on_end()
+                asyncio.create_task(self._game_io.ready(self.config['seat']))
 
     async def _run(self, conf_path: str = '/home/pi/Controller/config.toml'):
         """
             Asynchronous `run` function
         """
+        try:
+            self.config = toml.load(conf_path)
+            logging.debug(self.config)
 
-        self.config = toml.load(conf_path)
-        logging.debug(self.config)
+            # Init GameIO
+            self._game_io = GameIO(self.config['MQTT'])
+            await self._game_io.connect()
 
-        main_loop = asyncio.gather(
-            # self._ctl_sub(self.config['CONTROLLER']),
-            self._game_io_sub(self.config['MQTT'])
-        )
+            # Connect Device
+            try:
+                self._input_dev = InputDevice(self.config['CONTROLLER']['input_device'])
+            except FileNotFoundError:
+                raise ControllerNotFoundError
 
-        await self.on_init()
-        self._is_running = True
+            main_loop = asyncio.gather(
+                self._ctl_sub(),
+                self._game_io_sub()
+            )
 
-        # try:
-        await main_loop
-        await self.on_exit()
-        # except Exception as err:
-        #    await self.on_exit(err)
+            self._is_running = True
+            await self.on_init()
 
-    def run(self, conf_path: str = '/home/pi/Controller/config.toml', log_level: LogLevel = 0):
+            # try:
+            await main_loop
+            await self.on_exit()
+            # except Exception as err:
+            #    await self.on_exit(err)
+        except MqttError:
+            logging.error("Couldn't connect to MQTT Client")
+            logging.error("MQTT Config: %s", self.config['MQTT'])
+        except ControllerNotFoundError:
+            logging.error("Couldn't connect to Gamepad")
+            logging.error("Gamepad Config: %s", self.config['CONTROLLER'])
+        except FileNotFoundError:
+            logging.error("No config found at: %s", conf_path)
+
+    def run(self, conf_path: str = '/home/pi/Controller/config.toml', log_level: LogLevel = LogLevel.NOTSET):
         """
             Start the game engine
 
@@ -144,6 +161,6 @@ class Game:
                 log_level: logging level
         """
 
-        logging.getLogger().setLevel(log_level)
+        logging.getLogger().setLevel(log_level.value)
 
         asyncio.run(self._run(conf_path))
