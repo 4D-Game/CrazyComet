@@ -14,7 +14,7 @@ nav:
             Code References:
               - Game: sdk/code-references/game.md
               - GameIO: sdk/code-references/game-io.md
-      Gamecontrol: https://4d-game.github.io/Watcherstream/
+      Gamecontrol: https://4d-game.github.io/Gamecontrol/
 
 repo_url: https://github.com/4D-Game/Controller
 repo_name: 4D-Game/Controller
