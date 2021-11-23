@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+from hardware.turrets import TurretHAL
 from controls.turrets import TurretControl
 
 
