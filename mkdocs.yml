@@ -5,10 +5,10 @@ nav:
   - Home: https://4d-game.github.io
   - Coding Style: https://4d-game.github.io/coding-style/cpp/
   - Code References:
-      Streamer:
+      Controller:
         - Setup: index.md
-      Controller: https://4d-game.github.io/Controller/
-      Watcherstream: https://4d-game.github.io/Watcherstream/
+        - SDK: sdk/index.md
+      Gamecontrol: https://4d-game.github.io/Gamecontrol/
 
 repo_url: https://github.com/4D-Game/Streamer
 repo_name: 4D-Game/Streamer
@@ -22,25 +22,34 @@ theme:
     - navigation.tabs
     - navigation.top
   palette:
-    - scheme: default
-      primary: light blue
-      toggle:
-        icon: material/toggle-switch-off-outline
-        name: Switch to dark mode
+    # - scheme: default
+    #   primary: light blue
+    #   toggle:
+    #     icon: material/toggle-switch-off-outline
+    #     name: Switch to dark mode
     - scheme: slate
       primary: light blue
-      toggle:
-        icon: material/toggle-switch
-        name: Switch to light mode
+      # toggle:
+      #   icon: material/toggle-switch
+      #   name: Switch to light mode
 
 plugins:
   - search
   - mkdocstrings:
       watch:
         - src
+  - mermaid2:
+      arguments:
+        theme: 'dark'
 
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - attr_list
+  - md_in_html

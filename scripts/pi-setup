@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Update
+sudo apt update
+sudo apt upgrade -y
+
+# Install XBox controller support
+sudo apt install xboxdrv -y
+echo 'options bluetooth disable_ertm=Y' | sudo tee -a /etc/modprobe.d/bluetooth.conf

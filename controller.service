@@ -1,5 +1,5 @@
 [Unit]
-Description=Surrogate streamer control software
+Description=4D Game controler software
 After=network.target pigpiod.service
 Wants=pigpiod.service
 StartLimitIntervalSec=0
