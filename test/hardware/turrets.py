@@ -8,8 +8,11 @@ GPIO.setmode(GPIO.BCM)
 
 from hardware.turrets import TurretHAL
 
-turret = TurretHAL(17)
+turret1 = TurretHAL(17)
+turret2 = TurretHAL(27)
 
-time.sleep(50)
-turret.setPosition(100)
+time.sleep(5)
+turret1.setPosition(100)
+time.sleep(5)
+turret2.setPosition(100)
 
