@@ -2,7 +2,7 @@ import logging
 import RPi.GPIO as GPIO
 
 
-class TurretHAL():
+class TurretHAL:
     """
         Hardware interface to control the turrets
 
