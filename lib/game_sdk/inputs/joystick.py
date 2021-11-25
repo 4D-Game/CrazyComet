@@ -1,29 +1,47 @@
-from map.gamepad import JoystickCode
-from .input import Input
+import logging
+from game_sdk.key_map.gamepad import JoystickCode
+from game_sdk.inputs import Input
+
 
 class Joystick(Input):
     """
-        Class for all joystick inputs 
+        Class for all joystick inputs
     """
 
-    joystick_pos : JoystickCode
+    joystick_pos: JoystickCode
+    threshhold: float = 0.1
+    last_pos = 0
 
-    def __init__(self, seat:int, name:str, joystick_pos:JoystickCode):
+    def __init__(self, seat: int, name: str):
         """
-            Initializes the joystick 
+            Initializes the joystick
+
             Arguments:
                 seat: controller seat
                 name: controller name
                 joystick_pos = joystick position, x&y coordinates
         """
         super().__init__(seat, name)
-        self.joystick_pos = joystick_pos
 
-    def get_direction(self, x:int, y:int):
+    def _mapPosition(self, pos: int) -> float:
+        return (pos / 32768) - 1
+
+    async def set_direction(self, seat: int, pos: int):
+        mapped_pos = self._mapPosition(pos)
+
+        if ((- self.threshhold) < mapped_pos < (self.threshhold)) and (- self.threshhold) < self.last_pos < (self.threshhold):
+            return
+
+        self.last_pos = mapped_pos
+        await self.get_direction(seat, mapped_pos)
+
+    async def get_direction(self, seat: int, pos: float):
         """
-            Returns directions from the joystick
+            Called with directions from the joystick
+
             Arguments:
-                x: x-coordinate of movement
-                y: y-coordinate of movement
+                x: x-coordinate of movement (from -1 to 1)
+                y: y-coordinate of movement (from -1 to 1)
         """
-        pass
+
+        logging.info("Set direction of %s to %s", self.name, pos)

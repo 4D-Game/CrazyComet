@@ -9,6 +9,9 @@ from evdev import InputDevice, categorize, ecodes
 import toml
 
 from game_sdk.game_io import GameIO, GameState
+from game_sdk.inputs.joystick import Joystick
+from game_sdk.inputs.switch import Switch
+from game_sdk.key_map.gamepad import XBoxWireless
 
 
 class LogLevel(enum.Enum):
@@ -33,7 +36,7 @@ class Game:
         Class to control the whole game. Inherit from this class and call `run()` to start your game
     """
 
-    controls: list
+    controls: dict
     config: MutableMapping[str, Any]
     _input_dev: InputDevice
     _is_running = False
@@ -94,7 +97,18 @@ class Game:
             Subscribe to gamepad inputs
         """
         async for ev in self._input_dev.async_read_loop():
-            logging.info("CODE: %d, \tVALUE %d", ev.code, ev.value)
+            logging.debug("Got controller input - CODE: %d, \tVALUE %d", ev.code, ev.value)
+            mapped_code = XBoxWireless.mapKey(ev.code)
+            if mapped_code in self.controls:
+                control = self.controls[mapped_code]
+
+                if issubclass(type(control), Switch):
+                    if ev.value > 0:
+                        asyncio.create_task(control.on(self.config['seat']))
+                    else:
+                        asyncio.create_task(control.off(self.config['seat']))
+                elif issubclass(type(control), Joystick):
+                    asyncio.create_task(control.set_direction(self.config['seat'], ev.value))
 
     async def _game_io_sub(self):
         """

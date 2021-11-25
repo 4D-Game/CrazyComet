@@ -4,4 +4,4 @@ seat=1
 input_device="/dev/input/event1"
 
 [MQTT]
-broker_ip="ece-gamectl.fritz.box"
+broker_ip="10.36.40.109"

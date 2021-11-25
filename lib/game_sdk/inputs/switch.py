@@ -1,36 +1,42 @@
-from map.gamepad import KeyCode
+import logging
+from game_sdk.key_map.gamepad import KeyCode
 from .input import Input
+
 
 class Switch(Input):
     """
         Class for button inputs
     """
 
-    keybind : KeyCode
+    keybind: KeyCode
 
-    def __init__(self, seat:int, name:str, keybind:KeyCode):
+    def __init__(self, seat: int, name: str):
         """
-            Initializes the switch 
+            Initializes the switch
+
             Arguments:
                 seat: controller seat
                 name: controller name
                 keybind = controller buttons
         """
         super().__init__(seat, name)
-        self.keybind = keybind
 
-    def on(self, seat:int):
+    async def on(self, seat: int):
         """
-            Turn switch on
+            Called when switch is pressed
+
             Arguments:
-                seat: controller seat 
+                seat: controller seat
         """
-        pass
-    
-    def off(self, seat:int):            
+
+        logging.info("Set switch %s to on", self.name)
+
+    async def off(self, seat: int):
         """"
-            Turn switch off
+            Called when switch is released
+
             Arguments:
-                seat: controller seat 
+                seat: controller seat
         """
-        pass
+
+        logging.info("Set switch %s to off", self.name)
