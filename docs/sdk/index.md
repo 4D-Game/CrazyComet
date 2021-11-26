@@ -112,7 +112,3 @@ classDiagram
   GameIO ..> GameState
   Game ..> GameState
 ```
-
-### MQTT Communication
-
-![MQTT Structure](../assets/mqtt_structure_dark.svg)
