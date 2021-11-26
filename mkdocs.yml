@@ -5,9 +5,13 @@ nav:
       - C++: coding-style/cpp.md
       - Python: coding-style/python.md
       - GIT: coding-style/git.md
-  - Code References:
+  - Game Code:
       - Controller: https://4d-game.github.io/Controller/
       - Gamecontrol: https://4d-game.github.io/Gamecontrol/
+  - SDK:
+      - Overview: sdk/index.md
+      - Game SDK: https://4d-game.github.io/Controller/sdk
+      - Gamecontrol SDK: https://4d-game.github.io/Gamecontrol/sdk/
 
 repo_url: https://github.com/4D-Game/4D-Game.github.io
 repo_name: '4D-Game/Dokumentation'
@@ -34,7 +38,14 @@ theme:
 
 plugins:
   - search
+  - mermaid2:
+      arguments:
+        theme: 'dark'
 
 markdown_extensions:
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
