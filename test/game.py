@@ -24,6 +24,9 @@ class GameTest(Game):
             KeyCode.R2: TestSwitch(self.config['seat'], 'TestSwitch'),
             JoystickCode.LEFT_Y: TestDir(self.config['seat'], 'TestJoystick')
         }
+
+        self.ready_control = KeyCode.BUT_1
+
         return await super().on_init()
 
     async def on_pregame(self):
@@ -35,4 +38,4 @@ class GameTest(Game):
 
 if __name__ == "__main__":
     test_game = GameTest()
-    test_game.run(log_level=LogLevel.INFO)
+    test_game.run(log_level=LogLevel.DEBUG)
