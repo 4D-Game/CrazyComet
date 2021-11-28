@@ -42,8 +42,8 @@ class GamePad():
         Stores key- and joystick maps.
     """
 
-    key_map: dict[int, KeyCode]
-    joystick_map: dict[int, JoystickCode]
+    key_map: dict
+    joystick_map: dict
 
     def __init__(self, name: str, key_map: dict, joystick_map: dict):
         """
