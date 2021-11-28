@@ -37,7 +37,7 @@ class Game:
         Class to control the whole game. Inherit from this class and call `run()` to start your game
     """
 
-    controls: dict[enum.Enum, Input]
+    controls: dict
     ready_control: KeyCode
     config: MutableMapping[str, Any]
     game_state = GameState.IDLE
