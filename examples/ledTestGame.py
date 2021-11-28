@@ -1,3 +1,4 @@
+import logging
 from typing import Callable
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
@@ -37,10 +38,11 @@ class LedTestGame(Game):
         await self.game_io.score(score=self.score, seat=self.config["seat"])
 
     async def on_init(self):
+        self.ready_control=KeyCode.BUT_1
         # Register LED input with update score callback function
         self.controls={KeyCode.BUT_0: LEDSwitch(self.config["seat"], 'LEDSwitch_1', self.update_score)}
 
-    async def on_prepare(self):
+    async def on_pregame(self):
         # Set score to 0 before game starts
         self.score = 0
 
