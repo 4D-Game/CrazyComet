@@ -65,8 +65,10 @@ classDiagram
 ```mermaid
 classDiagram
   class Game{
-    +list controls
+    +dict controls
+    +KeyCode ready_control
     +dict config
+    +GameState game_state
     -evdev.InputDevice input_dev
     -bool is_running
     -GameIO game_io

@@ -9,9 +9,10 @@ from evdev import InputDevice, categorize, ecodes
 import toml
 
 from game_sdk.game_io import GameIO, GameState
+from game_sdk.inputs.input import Input
 from game_sdk.inputs.joystick import Joystick
 from game_sdk.inputs.switch import Switch
-from game_sdk.key_map.gamepad import XBoxWireless
+from game_sdk.key_map.gamepad import KeyCode, XBoxWireless
 
 
 class LogLevel(enum.Enum):
@@ -36,8 +37,10 @@ class Game:
         Class to control the whole game. Inherit from this class and call `run()` to start your game
     """
 
-    controls: dict
+    controls: dict[enum.Enum, Input]
+    ready_control: KeyCode
     config: MutableMapping[str, Any]
+    game_state = GameState.IDLE
     _input_dev: InputDevice
     _is_running = False
     _game_io: GameIO
@@ -99,16 +102,21 @@ class Game:
         async for ev in self._input_dev.async_read_loop():
             logging.debug("Got controller input - CODE: %d, \tVALUE %d", ev.code, ev.value)
             mapped_code = XBoxWireless.mapKey(ev.code)
-            if mapped_code in self.controls:
-                control = self.controls[mapped_code]
 
-                if issubclass(type(control), Switch):
-                    if ev.value > 0:
-                        asyncio.create_task(control.on(self.config['seat']))
-                    else:
-                        asyncio.create_task(control.off(self.config['seat']))
-                elif issubclass(type(control), Joystick):
-                    asyncio.create_task(control.set_direction(self.config['seat'], ev.value))
+            if self.game_state is GameState.RUN:
+                if mapped_code in self.controls:
+                    control = self.controls[mapped_code]
+
+                    if issubclass(type(control), Switch):
+                        if ev.value > 0:
+                            asyncio.create_task(control.on(self.config['seat']))
+                        else:
+                            asyncio.create_task(control.off(self.config['seat']))
+                    elif issubclass(type(control), Joystick):
+                        asyncio.create_task(control.set_direction(self.config['seat'], ev.value))
+            elif self.game_state is GameState.IDLE:
+                if mapped_code is self.ready_control and ev.value > 0:
+                    asyncio.create_task(self._game_io.ready(self.config['seat']))
 
     async def _game_io_sub(self):
         """
@@ -116,6 +124,7 @@ class Game:
         """
         async for game_state in self._game_io.subscribe():
             logging.debug("Got Gamestate %s", game_state)
+            self.game_state = game_state
 
             if game_state == GameState.START:
                 await self.on_pregame()
