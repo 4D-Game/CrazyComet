@@ -1,23 +1,24 @@
 from typing import List
-from ..hardware.turrets import TurretHAL
-from surrortg.inputs import MouseJoystick
+from hardware.turrets import TurretHAL
+from game_sdk.inputs import Joystick
 import logging
 
 
-class TurretControl(MouseJoystick):
+class TurretControl(Joystick):
     """
         Joystick wich controls the turrets
     """
 
-    def __init__(self):
-        pin = 0  # Read config
+    def __init__(self, seat: int, name: str):
+        pin = 17  # Read config
 
         # init controller
         self.controller = TurretHAL(pin)
 
         logging.info("Turret initialized")
+        super().__init__(seat, name)
 
-    async def handle_coordinates(self, x, y, seat: int = 0, dx=None, dy=None):
+    async def get_direction(self, seat: int, pos: float):
         """
             Set turretposition whenn the mouseposition changed on
 
@@ -26,8 +27,8 @@ class TurretControl(MouseJoystick):
         """
 
         # trigger turret
-        pos = (y + 1) / 2 * 100
-        self.controller.setPosition(pos)
+        maped_pos = (pos + 1) / 2 * 100
+        self.controller.setPosition(maped_pos)
 
         logging.info(f"Position turret for seat {seat}")
 

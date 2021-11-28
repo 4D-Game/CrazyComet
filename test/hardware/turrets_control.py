@@ -1,8 +1,14 @@
 #!/usr/bin/python3
 
+import asyncio
+
 from controls.turrets import TurretControl
+from hardware.turrets import TurretHAL
+import RPi.GPIO as GPIO
 
+# for GPIO numbering, choose BCM  
+GPIO.setmode(GPIO.BCM) 
 
-control = TurretControl()
+control = TurretControl(1, "turret_control")
 
-control.get_direction(20, 50)
+asyncio.run(control.get_direction(1, -1))

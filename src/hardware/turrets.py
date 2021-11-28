@@ -10,7 +10,7 @@ class TurretHAL:
             pin: number of the GPIO pin used to control the turret
     """
 
-    def __init__(self, pin: int = 17):
+    def __init__(self, pin: int):
         self.pin = pin
 
         GPIO.setup(pin, GPIO.OUT)
@@ -19,7 +19,7 @@ class TurretHAL:
 
         logging.info(f"Init turret at Pin {pin}")
 
-    def setPosition(self, pos: int = 50):
+    def setPosition(self, pos: int):
         """
             Trigger Turret with specific force
 
@@ -30,7 +30,7 @@ class TurretHAL:
         self.pwm.ChangeDutyCycle(self.__mapPosToPWM__(pos))
         logging.info(f"Turret moved to pos {pos}")
 
-    def close():
+    def close(self):
         """
             Called when the Interface is not needed anymore
         """
@@ -45,13 +45,25 @@ class TurretHAL:
             Arguments:
                 pos: Position between 0 and 100
         """
-
+        if pos < 0:
+            pos = 0
+        elif pos > 180:
+            pos = 180
+        a = pos/18 +2.5
+        print (a)
+        return pos/18 +2.5
+""""
         min_deg = 0
         max_deg = 180
 
-        pwm_range = (5, 10)
+        pwm_range = (2.5, 12.5)
 
         min_pwm = pwm_range[0] + (180 / (pwm_range[1] - pwm_range[0]) * min_deg)
         max_pwm = pwm_range[0] + (180 / (pwm_range[1] - pwm_range[0]) * max_deg)
-
+        #print (min_pwm)
+        #print (max_pwm)
+        a = min_pwm + (100 / (max_pwm - min_pwm) * 360)
+        print (a)
         return min_pwm + (100 / (max_pwm - min_pwm) * pos)
+        """
+        
