@@ -16,9 +16,15 @@ class Input(ABC):
         """
         self._name = name
 
-    def reset(self, seat: int):
+    async def reset(self, seat: int):
         """
             Executed at the end of the game. Resets all controller inputs
+        """
+        pass
+
+    async def close(self, seat: int):
+        """
+            Called when the program exits.
         """
         pass
 

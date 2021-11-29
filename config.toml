@@ -1,7 +1,7 @@
-seat=1
+seat=2
 
 [CONTROLLER]
-input_device="/dev/input/event0"
+input_device="/dev/input/event1"
 
 [MQTT]
-broker_ip="10.36.40.103"
+broker_ip="ece-gamectl.fritz.box"

@@ -1,6 +1,8 @@
 import asyncio
+from asyncio.tasks import create_task
 import enum
 import logging
+import atexit
 from typing import Any, MutableMapping, Type
 
 from asyncio_mqtt.error import MqttError
@@ -75,6 +77,19 @@ class Game:
         """
         logging.info("ON START")
 
+    async def _on_end(self):
+        """
+            (Private) Executed, when the game ends
+        """
+
+        for control in self.controls:
+            if issubclass(type(control), Switch):
+                asyncio.create_task(control.off(self.config['seat']))
+            elif issubclass(type(control), Joystick):
+                asyncio.create_task(control.set_direction(self.config['seat'], 0))
+
+        await self.on_end()
+
     async def on_end(self):
         """
             Executed, when the game ends
@@ -82,7 +97,30 @@ class Game:
 
         logging.info("ON END")
 
-    async def on_exit(self, err: Exception = None):
+    def _atexit(self):
+        """
+            Synchronous function to call `on_exit()`
+        """
+
+        self._on_exit()
+
+    def _on_exit(self, err: Exception = None):
+        """
+            (Private) Executed, when the game loop is exited
+
+            Arguments:
+                err: Value of the exception when the game exited with none zero code
+        """
+
+        for control in self.controls:
+            if issubclass(type(control), Switch):
+                asyncio.run(control.off(self.config['seat']))
+            elif issubclass(type(control), Joystick):
+                asyncio.run(control.set_direction(self.config['seat'], 0))
+
+        self.on_exit(err)
+
+    def on_exit(self, err: Exception = None):
         """
             Executed, when the game loop is exited
 
@@ -99,24 +137,28 @@ class Game:
         """
             Subscribe to gamepad inputs
         """
-        async for ev in self._input_dev.async_read_loop():
-            logging.debug("Got controller input - CODE: %d, \tVALUE %d", ev.code, ev.value)
-            mapped_code = XBoxWireless.mapKey(ev.code)
 
-            if self.game_state is GameState.RUN:
-                if mapped_code in self.controls:
-                    control = self.controls[mapped_code]
+        try:
+            async for ev in self._input_dev.async_read_loop():
+                logging.debug("Got controller input - CODE: %d, \tVALUE %d", ev.code, ev.value)
+                mapped_code = XBoxWireless.mapKey(ev.code)
 
-                    if issubclass(type(control), Switch):
-                        if ev.value > 0:
-                            asyncio.create_task(control.on(self.config['seat']))
-                        else:
-                            asyncio.create_task(control.off(self.config['seat']))
-                    elif issubclass(type(control), Joystick):
-                        asyncio.create_task(control.set_direction(self.config['seat'], ev.value))
-            elif self.game_state is GameState.IDLE:
-                if mapped_code is self.ready_control and ev.value > 0:
-                    asyncio.create_task(self._game_io.ready(self.config['seat']))
+                if self.game_state is GameState.RUN:
+                    if mapped_code in self.controls:
+                        control = self.controls[mapped_code]
+
+                        if issubclass(type(control), Switch):
+                            if ev.value > 0:
+                                asyncio.create_task(control.on(self.config['seat']))
+                            else:
+                                asyncio.create_task(control.off(self.config['seat']))
+                        elif issubclass(type(control), Joystick):
+                            asyncio.create_task(control.set_direction(self.config['seat'], ev.value))
+                elif self.game_state is GameState.IDLE:
+                    if mapped_code is self.ready_control and ev.value > 0:
+                        asyncio.create_task(self._game_io.ready(self.config['seat']))
+        except OSError:
+            raise ControllerNotFoundError()
 
     async def _game_io_sub(self):
         """
@@ -132,7 +174,7 @@ class Game:
             elif game_state == GameState.RUN:
                 await self.on_start()
             elif game_state == GameState.END:
-                await self.on_end()
+                await self._on_end()
                 asyncio.create_task(self._game_io.ready(self.config['seat']))
 
     async def _run(self, conf_path: str = '/home/pi/Controller/config.toml'):
@@ -153,6 +195,8 @@ class Game:
             except FileNotFoundError:
                 raise ControllerNotFoundError
 
+            # atexit.register(self._atexit)
+
             main_loop = asyncio.gather(
                 self._ctl_sub(),
                 self._game_io_sub()
@@ -161,11 +205,12 @@ class Game:
             self._is_running = True
             await self.on_init()
 
-            # try:
+            #  try:
             await main_loop
-            await self.on_exit()
+            self._on_exit()
             # except Exception as err:
-            #    await self.on_exit(err)
+            #     self._on_exit(err)
+
         except MqttError:
             logging.error("Couldn't connect to MQTT Client")
             logging.error("MQTT Config: %s", self.config['MQTT'])
@@ -186,4 +231,8 @@ class Game:
 
         logging.getLogger().setLevel(log_level.value)
 
-        asyncio.run(self._run(conf_path))
+        try:
+            loop = asyncio.get_event_loop()
+            loop.run_until_complete(self._run(conf_path))
+        except KeyboardInterrupt:
+            self._on_exit()

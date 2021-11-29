@@ -46,7 +46,7 @@ plugins:
   - search
   - mkdocstrings:
       watch:
-        - lib/gamecontrol_sdk
+        - lib/game_sdk
         - src
   - mermaid2:
       arguments:
