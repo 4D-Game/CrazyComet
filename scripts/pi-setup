@@ -1,9 +1,25 @@
 #!/bin/bash
 
-# Update
+SCRIPT_PATH=$(dirname `which $0`)
+
+echo "Updatet packages ---------------------------------------------------------"
 sudo apt update
 sudo apt upgrade -y
+echo ""
 
-# Install XBox controller support
-sudo apt install xboxdrv -y
-echo 'options bluetooth disable_ertm=Y' | sudo tee -a /etc/modprobe.d/bluetooth.conf
+echo "Setup Shell environment --------------------------------------------------"
+echo "export PYTHONPATH=$SCRIPT_PATH/../src" >> ~/.profile
+source ~/.profile
+echo ""
+
+# Install XBox360 controller support
+# sudo apt install xboxdrv -y
+# echo 'options bluetooth disable_ertm=Y' | sudo tee -a /etc/modprobe.d/bluetooth.conf
+
+# Install XBox Wireless Controller 
+# sudo apt-get install bluetooth bluez blueman
+
+echo "Install Python and Pip ---------------------------------------------------"
+sudo apt install python3 python3-pip -y
+pip3 install -Ur requirements.txt
+echo ""

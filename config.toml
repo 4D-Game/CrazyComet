@@ -1,0 +1,7 @@
+seat=2
+
+[CONTROLLER]
+input_device="/dev/input/event1"
+
+[MQTT]
+broker_ip="ece-gamectl.fritz.box"
