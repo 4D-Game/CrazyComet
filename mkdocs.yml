@@ -1,6 +1,9 @@
 site_name: ECE Projekt - 4D Game
 nav:
-  - Home: index.md
+  - Home:
+      - Instructions: index.md
+      - Assembly: assembly.md
+      - Documentation: documentation.md
   - Coding Style:
       - C++: coding-style/cpp.md
       - Python: coding-style/python.md
@@ -44,6 +47,8 @@ plugins:
 
 markdown_extensions:
   - pymdownx.highlight
+  - admonition
+  - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
