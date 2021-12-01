@@ -15,9 +15,10 @@ nav:
       - Overview: sdk/index.md
       - Game SDK: https://4d-game.github.io/Controller/sdk
       - Gamecontrol SDK: https://4d-game.github.io/Gamecontrol/sdk/
+  - Hardware: https://4d-game.github.io/Hardware
 
 repo_url: https://github.com/4D-Game/4D-Game.github.io
-repo_name: '4D-Game/Dokumentation'
+repo_name: '4D-Game/Documentation'
 
 theme:
   name: material
