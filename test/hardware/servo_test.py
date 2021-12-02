@@ -22,7 +22,9 @@ while(x<5):
         positionl = 1./18.*(i)+2
         positionr = 1./18.*(180-i)+2
         lPwm.ChangeDutyCycle(positionl)
+        print(positionl)
         rPwm.ChangeDutyCycle(positionr)
+        print(positionr)
         time.sleep(0.005)
     for i in range(135, 45, -1):
         positionl = 1./18.*(i)+2
