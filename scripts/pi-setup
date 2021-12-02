@@ -20,3 +20,11 @@ echo "Install Python and Pip ---------------------------------------------------
 sudo apt install python3 python3-pip -y
 pip3 install -Ur requirements.txt
 echo ""
+
+
+echo "Install gpiozero ---------------------------------------------------"
+sudo apt install python3-gpiozero
+sudo apt-get install python3-pigpio
+sudo pigpiod 
+echo ""
+

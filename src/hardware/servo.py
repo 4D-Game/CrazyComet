@@ -1,5 +1,10 @@
 import logging
-import RPi.GPIO as GPIO
+import time
+
+from gpiozero import Servo
+from gpiozero.pins.native import NativeFactory
+
+
 
 
 class ServoHAL:
@@ -13,10 +18,7 @@ class ServoHAL:
     def __init__(self, pin: int):
         self.pin = pin
 
-        GPIO.setup(pin, GPIO.OUT)
-
-        self.pwm = GPIO.PWM(pin, 50)
-        self.pwm.start(self._mapPosToPWM(90))
+        self.pwm = Servo(pin, initial_value=0,min_pulse_width=0.5/1000, max_pulse_width=2.5/1000)
 
         logging.debug(f"Init turret at Pin {pin}")
 
@@ -25,19 +27,20 @@ class ServoHAL:
             Trigger Turret with specific force
 
             Arguments:
-                force: Turretposition between 0 and 180°
+                force: Turretposition between -1 and 1
         """
-
-        self.pwm.ChangeDutyCycle(self._mapPosToPWM(pos))
+        self.pwm.value = pos
+        #self.pwm.ChangeDutyCycle(self._mapPosToPWM(pos))
         logging.debug(f"Turret moved to pos {pos}")
 
-    def close(self):   #wird nie ausgeführt?
+    def close(self):   
         """
             Called when the Interface is not needed anymore
         """
-        self.pwm.stop()
+        self.pwm.value = None
         logging.debug(f"Turret interface closed")
 
+    
     def _mapPosToPWM(self, pos: int) -> int:
         """
             Map a given position to PWM duty cycle
