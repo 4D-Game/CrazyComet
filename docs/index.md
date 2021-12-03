@@ -27,7 +27,7 @@ To use the `4DGame` SDK you have do add the `lib` folder to your `PYTHONPATH` va
 Additionally add the `src` folder to your `PYTHONPATH` for nicer imports and automatic documentation.
 
 ```bash
-export PYTHONPATH="$(pwd)/src:$(pwd)/lib"
+export PYTHONPATH="$(pwd)/src:$(pwd)/lib/sdk"
 ```
 ### Documentation
 The Documentation is generated with the help of [mkdocstrings](https://mkdocstrings.github.io/#). To implement a module, class or function into your documentation you have to reference it as follows:
