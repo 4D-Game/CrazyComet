@@ -8,6 +8,20 @@ To write code and generate the documentation you need to install the packages li
 pip3 install -r requirements.txt
 ```
 
+The sdk needed to use this program is stored in a submodule. To use it the following commands should be executed:
+
+```bash
+git submodule init
+git submodule update
+```
+
+!!! INFO
+    To update the sdk to the latest commit run
+
+    ```bash
+    git submodule update --recursive --remote
+    ```
+
 ### PYTHONPATH
 To use the `4DGame` SDK you have do add the `lib` folder to your `PYTHONPATH` variable.
 Additionally add the `src` folder to your `PYTHONPATH` for nicer imports and automatic documentation.
