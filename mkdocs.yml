@@ -1,4 +1,4 @@
-site_name: ECE Projekt - 4D Game
+site_name: ECE Projekt - Crazy Comet
 nav:
   - Home:
       - Instructions: index.md
@@ -11,10 +11,7 @@ nav:
   - Game Code:
       - Controller: https://4d-game.github.io/Controller/
       - Gamecontrol: https://4d-game.github.io/Gamecontrol/
-  - SDK:
-      - Overview: sdk/index.md
-      - Game SDK: https://4d-game.github.io/Controller/sdk
-      - Gamecontrol SDK: https://4d-game.github.io/Gamecontrol/sdk/
+  - SDK: https://4d-game.github.io/SDK/
   - Hardware: https://4d-game.github.io/Hardware
 
 repo_url: https://github.com/4D-Game/4D-Game.github.io
