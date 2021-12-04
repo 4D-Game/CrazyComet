@@ -28,3 +28,10 @@ sudo apt-get install python3-pigpio
 sudo pigpiod 
 echo ""
 
+echo "Install display ---------------------------------------------------"
+sudo apt-get update
+sudo pip3 install Adafruit-Blinka
+sudo pip3 install adafruit-circuitpython-rgb-display
+sudo apt-get install python3-pil
+echo ""
+
