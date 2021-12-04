@@ -1,4 +1,4 @@
-seat=2
+seat=1
 
 [CONTROLLER]
 input_device="/dev/input/event1"

@@ -8,7 +8,7 @@ sudo apt upgrade -y
 echo ""
 
 echo "Setup Shell environment --------------------------------------------------"
-echo "export PYTHONPATH=$SCRIPT_PATH/../src" >> ~/.profile
+echo "export PYTHONPATH=$SCRIPT_PATH/../src:$SCRIPT_PATH/../lib/sdk" >> ~/.profile
 source ~/.profile
 echo ""
 
@@ -16,7 +16,7 @@ echo ""
 # sudo apt install xboxdrv -y
 # echo 'options bluetooth disable_ertm=Y' | sudo tee -a /etc/modprobe.d/bluetooth.conf
 
-# Install XBox Wireless Controller 
+# Install XBox Wireless Controller
 # sudo apt-get install bluetooth bluez blueman
 
 echo "Install Python and Pip ---------------------------------------------------"
