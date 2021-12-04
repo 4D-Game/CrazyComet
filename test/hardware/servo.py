@@ -17,11 +17,11 @@ try:
 
   input('Press return to stop:')
   turret1.setPosition(-0.5)
-  turret2.setPosition(0.5)
+  turret2.setPosition(-0.5)
 
   input('Press return to stop:')
   turret1.setPosition(-1)
-  turret2.setPosition(1)
+  turret2.setPosition(0.5)
 
   input('Press return to stop:')
 except KeyboardInterrupt:
