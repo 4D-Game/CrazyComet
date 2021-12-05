@@ -1,0 +1,7 @@
+seat=1
+
+[CONTROLLER]
+input_device="/dev/input/event1"
+
+[MQTT]
+broker_ip="10.36.40.109"

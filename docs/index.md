@@ -1,15 +1,21 @@
-# Streamer Setup
+# Controller Setup
 
 ## Development
 
-To write code and generate the documentation you need to install the packages listed in `requirements.dev.txt` with `pip`
+To write code and generate the documentation you need to install the packages listed in `requirements.txt` with `pip`
 
 ```bash
-pip install -r requirements.dev.txt
+pip3 install -r requirements.txt
 ```
 
-### Documentation
+### PYTHONPATH
+To use the `4DGame` SDK you have do add the `lib` folder to your `PYTHONPATH` variable.
+Additionally add the `src` folder to your `PYTHONPATH` for nicer imports and automatic documentation.
 
+```bash
+export PYTHONPATH="$(pwd)/src:$(pwd)/lib"
+```
+### Documentation
 The Documentation is generated with the help of [mkdocstrings](https://mkdocstrings.github.io/#). To implement a module, class or function into your documentation you have to reference it as follows:
 
 ```md
@@ -28,12 +34,4 @@ For the usage on Device the packages listed in `requirements.txt` should be inst
 pip install -r requirements.txt
 ```
 
-Next run `scripts/generate-config` to generate a streamerconfiguration with your gametoken and a device ID at `./srtg.toml`
-
-To activate/update the streamerconfiguration on your device run `scripts/streamer-setup
-!!! warning
-    This will replace the `/etc/srtg/srtg.toml` from the Surrogate SDK
-
-Finally setup the controller service with `scripts/systemd-setup`
-!!! warning
-    This will replace the `controller.service` from the Surrogate SDK
+Next setup the controller service with `scripts/systemd-setup`

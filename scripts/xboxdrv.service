@@ -1,0 +1,16 @@
+[Unit]
+Description=Xbox controller driver daemon
+ConditionPathExists=/run/xboxdrv/running/%i
+BindsTo=dev-bus-usb-%i.device
+After=xboxdrv-config@%i.service
+Requires=xboxdrv-config@%i.service
+
+StopWhenUnneeded=true
+[Service]
+Type=simple
+EnvironmentFile=/run/xboxdrv/running/%i
+ExecStart=/usr/bin/xboxdrv --silent
+SuccessExitStatus=6
+
+[Install]
+WantedBy=multi-user.target
