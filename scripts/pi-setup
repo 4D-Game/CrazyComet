@@ -8,24 +8,26 @@ sudo apt upgrade -y
 echo ""
 
 echo "Setup Shell environment --------------------------------------------------"
-echo "export PYTHONPATH=$SCRIPT_PATH/../src" >> ~/.profile
+echo "export PYTHONPATH=$SCRIPT_PATH/../src:$SCRIPT_PATH/../lib/sdk" >> ~/.profile
 source ~/.profile
 echo ""
 
-# Install XBox controller support
+# Install XBox360 controller support
 # sudo apt install xboxdrv -y
 # echo 'options bluetooth disable_ertm=Y' | sudo tee -a /etc/modprobe.d/bluetooth.conf
+
+# Install XBox Wireless Controller
+# sudo apt-get install bluetooth bluez blueman
 
 echo "Install Python and Pip ---------------------------------------------------"
 sudo apt install python3 python3-pip -y
 pip3 install -Ur requirements.txt
 echo ""
 
-
 echo "Install gpiozero ---------------------------------------------------"
 sudo apt install python3-gpiozero
 sudo apt-get install python3-pigpio
-sudo pigpiod 
+sudo pigpiod
 echo ""
 
 echo "Install display ---------------------------------------------------"
