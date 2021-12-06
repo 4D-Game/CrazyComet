@@ -28,8 +28,7 @@ class ServoHAL:
                 force: Turretposition between -90 and 90
         """
         self.pwm.value = pos / 90
-        # self.pwm.ChangeDutyCycle(self._mapPosToPWM(pos))
-        logging.debug(f"Turret moved to pos {pos}")
+        # logging.debug(f"Turret moved to pos {pos}")
 
     def close(self):
         """
@@ -52,7 +51,5 @@ class ServoHAL:
 
         pwm_range = (2.5, 12.5)
         duty_cycle = pwm_range[0] + ((pwm_range[1] - pwm_range[0]) / 180 * pos)
-
-        logging.debug(duty_cycle)
 
         return duty_cycle

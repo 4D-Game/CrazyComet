@@ -6,21 +6,22 @@ from hardware.servo import ServoHAL
 from game_sdk.inputs import Joystick
 import logging
 
-from sdk.game_sdk.inputs import joystick
-
 
 class TurretControl(Joystick):
     """
         Joystick wich controls the turrets
     """
 
-    MAX_DEFLECTION = None
+    MAX_DEFLECTION = 30
+    MIN_DEFLECTION = -30
+    MAPPING_FACTOR = 1.2
+    threshhold = 0.25
 
     joystick_pos = 0
     servo_pos = 0
     position_task: Task = None
 
-    def __init__(self, seat: int, name: str, pin: int, max_deflection: int):
+    def __init__(self, seat: int, name: str, pin: int):
         """
             Arguments:
                 seat: controller seat
@@ -31,7 +32,6 @@ class TurretControl(Joystick):
 
         super().__init__(seat, name)
         self.servo = ServoHAL(pin)
-        self.MAX_DEFLECTION = max_deflection
 
         logging.info(f"Turret {self.name} initialized")
 
@@ -44,26 +44,29 @@ class TurretControl(Joystick):
                 pos: position of the joystick between -1 and 1
         """
 
-        self.joystick_pos = pos
+        range = self.MAX_DEFLECTION - self.MIN_DEFLECTION
 
-    async def setPosition(self):
-        """
-            Loop to set servo position depending on the joystick position
-        """
+        self.servo_pos = (pos + 1) / 2 * range + self.MIN_DEFLECTION
+        self.servo.setPosition(self.servo_pos)
 
-        MAPPING_FACTOR = 0.2
-        MAX_DEFLECTION = self.MAX_DEFLECTION
+        # self.joystick_pos = pos
+        logging.debug(f"Set position of Turret {self.name} to {pos}")
 
-        while True:
-            self.servo_pos += self.joystick_pos * MAPPING_FACTOR
+    # async def setPosition(self):
+    #     """
+    #         Loop to set servo position depending on the joystick position
+    #     """
 
-            if self.servo_pos > MAX_DEFLECTION:
-                self.servo_pos = MAX_DEFLECTION
-            elif self.servo_pos < - MAX_DEFLECTION:
-                self.servo_pos = - MAX_DEFLECTION
+    #     while True:
+    #         self.servo_pos += self.joystick_pos * self.MAPPING_FACTOR
 
-            self.servo.setPosition(self.servo_pos)
-            await sleep(0.02)
+    #         if self.servo_pos > self.MAX_DEFLECTION:
+    #             self.servo_pos = self.MAX_DEFLECTION
+    #         elif self.servo_pos < self.MIN_DEFLECTION:
+    #             self.servo_pos = self.MIN_DEFLECTION
+
+    #         self.servo.setPosition(self.servo_pos)
+    #         await sleep(0.0025)
 
     async def init(self, seat: int = 0):
         """
@@ -73,11 +76,11 @@ class TurretControl(Joystick):
                 seat: number of the seat
         """
 
-        if self.position_task:
-            if not self.position_task.cancelled:
-                self.position_task.cancel()
+        # if self.position_task:
+        #     if not self.position_task.cancelled:
+        #         self.position_task.cancel()
 
-        self.position_task = create_task(self.setPosition())
+        # self.position_task = create_task(self.setPosition())
 
     async def reset(self, seat: int = 0):
         """
@@ -87,9 +90,9 @@ class TurretControl(Joystick):
                 seat: number of the seat
         """
 
-        if self.position_task:
-            self.position_task.cancel()
-            self.position_task = None
+        # if self.position_task:
+        #     self.position_task.cancel()
+        #     self.position_task = None
 
         self.servo_pos = 0
         self.servo.setPosition(0)
@@ -104,3 +107,16 @@ class TurretControl(Joystick):
 
         await self.reset(seat)
         self.servo.close()
+
+
+class VerticalTurretControl(TurretControl):
+
+    MAX_DEFLECTION = 20
+    MIN_DEFLECTION = -40
+    MAPPING_FACTOR = 1.2
+
+
+class HorizontalTurretControl(TurretControl):
+    MAX_DEFLECTION = 25
+    MIN_DEFLECTION = -25
+    MAPPING_FACTOR = -1

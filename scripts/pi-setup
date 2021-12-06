@@ -25,15 +25,18 @@ pip3 install -Ur requirements.txt
 echo ""
 
 echo "Install gpiozero ---------------------------------------------------"
-sudo apt install python3-gpiozero
-sudo apt-get install python3-pigpio
-sudo pigpiod
+sudo apt install python3-gpiozero -y
+sudo apt-get install python3-pigpio -y
+sleep 1
+"\nenable pygpiod"
+sudo systemctl enable pygpiod
+sydo systemctl restart pygpiod
 echo ""
 
-echo "Install display ---------------------------------------------------"
-sudo apt-get update
-sudo pip3 install Adafruit-Blinka
-sudo pip3 install adafruit-circuitpython-rgb-display
-sudo apt-get install python3-pil
-echo ""
+# echo "Install display ---------------------------------------------------"
+# sudo apt-get update
+# sudo pip3 install Adafruit-Blinka
+# sudo pip3 install adafruit-circuitpython-rgb-display
+# sudo apt-get install python3-pil
+# echo ""
 
