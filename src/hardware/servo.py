@@ -1,5 +1,4 @@
 import logging
-import time
 
 from gpiozero import Servo
 from gpiozero.pins.native import NativeFactory

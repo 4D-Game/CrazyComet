@@ -2,7 +2,7 @@
 
 import asyncio
 import logging
-from game_sdk.key_map.gamepad import JoystickCode, XBoxWireless
+from game_sdk.controller.key_map.gamepad import JoystickCode, XBoxWireless
 from gpiozero import Device
 from gpiozero.pins.pigpio import PiGPIOFactory
 from evdev import InputDevice, categorize, ecodes

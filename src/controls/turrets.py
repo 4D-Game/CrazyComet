@@ -3,7 +3,7 @@ from asyncio.tasks import Task
 from typing import List
 from hardware import servo
 from hardware.servo import ServoHAL
-from game_sdk.inputs import Joystick
+from game_sdk.controller.inputs import Joystick
 import logging
 
 
