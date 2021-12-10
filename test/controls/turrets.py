@@ -2,10 +2,11 @@
 
 import asyncio
 import logging
-from game_sdk.key_map.gamepad import JoystickCode, XBoxWireless
 from gpiozero import Device
 from gpiozero.pins.pigpio import PiGPIOFactory
 from evdev import InputDevice, categorize, ecodes
+
+from game_sdk.controller.key_map.gamepad import JoystickCode, XBoxWireless
 from controls.turrets import HorizontalTurretControl, TurretControl, VerticalTurretControl
 
 
@@ -27,7 +28,7 @@ async def realJoystick():
         await asyncio.sleep(1)
 
         async for ev in input_dev.async_read_loop():
-            mapped_code = XBoxWireless.mapKey(ev.code)
+            mapped_code = XBoxWireless.map_key(ev.code)
 
             if mapped_code in controls and ev.type != 0:
                 control = controls[mapped_code]
