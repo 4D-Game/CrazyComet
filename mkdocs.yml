@@ -6,7 +6,15 @@ nav:
   - Coding Style: https://4d-game.github.io/coding-style/cpp/
   - Game Code:
       - Controller:
-          - Setup: index.md
+          - Overview: index.md
+          - Setup: setup.md
+          - Code References:
+              - Controls:
+                  - Turrets: code-references/controls/turrets.md
+              - Hardware:
+                  - HAL: code-references/hardware/hal.md
+                  - Servo: code-references/hardware/servo.md
+          - Known Issues: known-issues.md
       - Gamecontrol: https://4d-game.github.io/Gamecontrol/
   - SDK: https://4d-game.github.io/sdk/
   - Hardware: https://4d-game.github.io/Hardware
@@ -38,7 +46,6 @@ plugins:
   - search
   - mkdocstrings:
       watch:
-        - lib/game_sdk
         - src
   - mermaid2:
       arguments:
