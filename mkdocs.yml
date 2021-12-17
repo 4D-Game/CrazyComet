@@ -9,8 +9,10 @@ nav:
           - Overview: index.md
           - Setup: setup.md
           - Code References:
+              - Main: code-references/main.md
               - Controls:
                   - Turrets: code-references/controls/turrets.md
+                  - Blaster: code-references/controls/blaster.md
               - Hardware:
                   - HAL: code-references/hardware/hal.md
                   - Servo: code-references/hardware/servo.md

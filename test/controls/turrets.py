@@ -2,11 +2,12 @@
 
 import asyncio
 import logging
+
 from gpiozero import Device
 from gpiozero.pins.pigpio import PiGPIOFactory
 from evdev import InputDevice, categorize, ecodes
 
-from game_sdk.controller.key_map.gamepad import JoystickCode, XBoxWireless
+from game_sdk.controller.key_map.gamepad import BosiWirelessGXT590, JoystickCode, XBoxWireless
 from controls.turrets import HorizontalTurretControl, TurretControl, VerticalTurretControl
 
 
@@ -16,7 +17,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 async def realJoystick():
     try:
-        input_dev = InputDevice("/dev/input/event1")
+        input_dev = InputDevice("/dev/input/event0")
 
         controls = {
             JoystickCode.LEFT_Y: VerticalTurretControl(1, "horizontal_control", 13),
@@ -28,13 +29,13 @@ async def realJoystick():
         await asyncio.sleep(1)
 
         async for ev in input_dev.async_read_loop():
-            mapped_code = XBoxWireless.map_key(ev.code)
+            mapped_code = BosiWirelessGXT590.map_key(ev.code)
 
             if mapped_code in controls and ev.type != 0:
                 control = controls[mapped_code]
                 logging.debug(f"Found control: {control.name}")
 
-                asyncio.create_task(control.set_direction(1, ev.value))
+                asyncio.create_task(control.set_direction(1, BosiWirelessGXT590.map_joystick_pos(ev.value)))
 
     except KeyboardInterrupt:
         logging.info("Keyboard Interrupt")

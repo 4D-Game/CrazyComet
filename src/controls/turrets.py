@@ -17,6 +17,7 @@ class TurretControl(Joystick):
             MAPPING_FACTOR: used to scale the mapped turret position
             T: Delay of the PT1 element used to controll the turret position
             THRESHHOLD: threshold under wich a joystick value is recognized as 0
+            servo: Instance of ServoHAL to control a servo
     """
 
     MAX_DEFLECTION: int = 30
@@ -29,16 +30,20 @@ class TurretControl(Joystick):
     _servo_pos = 0
     _position_task: Task = None
 
-    def __init__(self, seat: int, name: str, pin: int):
+    def __init__(self, seat: int, name: str, pin: int = 13, offset: int = 0):
         """
             Arguments:
                 seat: controller seat
                 name: Name of the control
                 pin: Pin the servo is connected to
+                offset: Servo offset from the zero position in degree
         """
 
         super().__init__(seat, name)
-        self.servo = ServoHAL(pin)
+        self.servo: ServoHAL = ServoHAL(pin)
+
+        self.MIN_DEFLECTION += offset
+        self.MAX_DEFLECTION += offset
 
         logging.info(f"Turret {self.name} initialized")
 
@@ -62,7 +67,7 @@ class TurretControl(Joystick):
             Loop to set servo position depending on the joystick position
         """
 
-        DT = 0.0025
+        DT = 0.002
 
         while True:
             self._servo_pos = self._servo_pos + (self._joystick_pos - self._servo_pos) / self.T * DT

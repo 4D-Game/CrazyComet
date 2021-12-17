@@ -4,4 +4,11 @@ seat=1
 input_device="/dev/input/event1"
 
 [MQTT]
-broker_ip="ece-gamectl.local"
+broker_ip="10.3.141.1"
+
+[CrazyComet]
+magazine_size=5
+
+[CrazyComet.turrets]
+vertical_offset=0
+horizontal_offset=0
