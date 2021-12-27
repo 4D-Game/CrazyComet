@@ -1,20 +1,25 @@
-# Game-Concept of "Cooler Spielname"
+# Game-instructions
 
-## Grundprinzip
+## Game-preparation
 
-Ein sich im Kreis drehendes bzw. auf und ab wippendes Objekt muss mit Hilfe einer Art „Waffe“ (Wird durch Infrarot Sensoren und LEDs umgesetzt) abgeschossen werden. Für jeden Treffer bekommt der Spieler Punkte. Der Spieler, der nach dem Ablauf einer bestimmten Zeit die meisten Punkte besitzt, hat gewonnen.
+Before starting the game a test calibration is accomplished. This test zeros every motor in order to function right. The teams get selected.
 
-## Spielregeln
+## Game-goal
 
-Das Spiel ist für maximal 8 Personen ausgelegt und dauert Pro Runde <<x>> Minuten. Zu beginn jeder Runde wird dem Spieler eine Waffe zugewiesen und die entsprechende Kameraperspektive auf der Surrogate Website angezeigt. Der Spieler kann seine Waffe mittels auf und ab Bewegungen der Maus steuern. Das Schießen wird über die rechte Maustaste umgesetzt. Ziel ist des die Waffe in die Position zu bringen in der sie am nächsten zum drehenden Objekt ist, um dieses auch treffen zu können. Für jeden Treffer bekommt der Spieler auf sein Punktekonto. Der Spieler, der am Rundenende die meisten Punkte besitzt, hat gewonnen.
+Get more points than the other team to win the game.
 
-## Erweiterungen
+## Game-history
 
-Um den Spielspaß zu erhöhen und das ganze Spiel dynamischer zu gestalten können zwei sich drehende Objekte verwendet werden.
+Every player gets assigned to a turret with the associated controller. The players try to shoot the rotating object by controlling the turret with the controller (see coontroller settings). For every hit the players get points. The team with the most points after the round finishes wins. One player can only shoot ... time when the object is passing. Afterwards the turret needs to cool down. When a player shoots the red LED on the turret lights up. After hitting the target the green LED lights up.
 
-Die Geschwindigkeit des Objekts wird während des Spiels verändert. Diese wird im fortlaufenden Spiel schneller.
+## Game-end
 
-PowerUps: Trifft der Spieler das Objekt <<x>> hintereinander bekommt dieses Spiel für <<y>> Sekunden die doppelte Punkte Anzahl für jeden Treffer.
+The game ends as soon as the time is over. The points are evaluated and the team with the more points win.
 
-Je nachdem wie gut das Objekt getroffen wurde, bekommt der Spieler unterschiedlich viele Punkte (Sensor empfangt unterschiedlich starke Signale je nachdem in welchem Winkel die strahlen reflektiert werden).
+## Controller-settings
+
+- left joystick: controll lower turret servo
+- right joystick: controll upper turret servo
+- RT: shooting
+
 
