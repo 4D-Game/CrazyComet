@@ -10,6 +10,7 @@ from gpiozero import Device
 from gpiozero.pins.pigpio import PiGPIOFactory
 
 from game_sdk.controller import Game
+from game_sdk.game import LogLevel
 from game_sdk.controller.key_map import JoystickCode, KeyCode
 
 from controls.blaster import Blaster
@@ -66,4 +67,4 @@ if __name__ == "__main__":
     Device.pin_factory = PiGPIOFactory()
 
     game = CrazyComet()
-    game.run("/home/pi/Controller/config.toml")
+    game.run("/home/pi/Controller/config.toml", LogLevel.INFO)

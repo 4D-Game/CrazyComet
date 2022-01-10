@@ -1,5 +1,5 @@
 import asyncio
-from asyncio import sleep
+from asyncio import sleep, Lock
 from typing import Any, Callable
 from gpiozero import Button, LED
 import logging
@@ -16,6 +16,9 @@ class Blaster(Switch):
             points_led: LED wich blinks when a hit detected
             magazine: Number of shots left in the magazine
     """
+
+    _shoot_lock = Lock()
+    _reload_lock = Lock()
 
     def __init__(self, seat: int, name: str, score_cb: Callable = None, magazine_size: int = 5):
         """
@@ -35,7 +38,7 @@ class Blaster(Switch):
         self._score_cb = score_cb
 
         self._max_magazine = magazine_size
-        self.magazine: int = 5
+        self.magazine: int = magazine_size
 
         logging.info("Sensor initialized")
 
@@ -47,19 +50,25 @@ class Blaster(Switch):
                 seat: controller seat
         """
 
-        asyncio.create_task(self._led_on(self.shoot_led, 0.1))
+        async with self._shoot_lock:
+            if self.magazine > 0:
+                self.magazine -= 1
 
-        self.magazine -= 1
+                asyncio.create_task(self._led_on(self.shoot_led, 0.1))
 
-        if self.magazine >= 0:
-            if self.sensor.is_pressed:
-                self.magazine = 0
-                asyncio.create_task(self._led_on(self.points_led, 1))
-                await self._score_cb()
+                if self.sensor.is_pressed:
+                    self.magazine = 0
+                    asyncio.create_task(self._led_on(self.points_led, 1))
+                    await self._score_cb()
 
-        if self.magazine is 0:
-            asyncio.sleep(1)
-            self.magazine = self._max_magazine
+        if not self._reload_lock.locked() and self.magazine <= 0:
+            async with self._reload_lock:
+                await asyncio.sleep(1)
+                async with self._shoot_lock:
+                    self.magazine = self._max_magazine
+
+    async def off(self, _: int):
+        pass
 
     async def _led_on(self, led, time: float):
         """

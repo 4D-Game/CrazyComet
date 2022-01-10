@@ -58,7 +58,7 @@ class TurretControl(Joystick):
 
         range = self.MAX_DEFLECTION - self.MIN_DEFLECTION
 
-        self._joystick_pos = ((pos + 1) / 2 * range + self.MIN_DEFLECTION) * self.MAPPING_FACTOR
+        self._joystick_pos = (((pos * self.MAPPING_FACTOR) + 1) / 2 * range + self.MIN_DEFLECTION)
 
         logging.debug(f"Set position of Turret {self.name} to {self._joystick_pos}")
 
@@ -92,7 +92,7 @@ class TurretControl(Joystick):
             if not self._position_task.cancelled:
                 self._position_task.cancel()
 
-        self._joystick_pos = ((self.MAX_DEFLECTION - self.MIN_DEFLECTION) / 2 + self.MIN_DEFLECTION) * self.MAPPING_FACTOR
+        self._joystick_pos = ((self.MAX_DEFLECTION - self.MIN_DEFLECTION) / 2 + self.MIN_DEFLECTION)
         self._position_task = create_task(self.setPosition())
         logging.debug(f"Init servo at position {self._joystick_pos}")
 
@@ -118,7 +118,6 @@ class TurretControl(Joystick):
             Arguments:
                 seat: number of the seat
         """
-
         await self.reset(seat)
         self.servo.close()
 
@@ -136,8 +135,8 @@ class VerticalTurretControl(TurretControl):
 
     MAX_DEFLECTION = 20
     MIN_DEFLECTION = -40
-    MAPPING_FACTOR = 1
-    T = 0.02
+    MAPPING_FACTOR = -1
+    T = 0.025
 
 
 class HorizontalTurretControl(TurretControl):
@@ -152,5 +151,5 @@ class HorizontalTurretControl(TurretControl):
     """
     MAX_DEFLECTION = 30
     MIN_DEFLECTION = -30
-    MAPPING_FACTOR = -1
-    T = 0.04
+    MAPPING_FACTOR = 1
+    T = 0.035

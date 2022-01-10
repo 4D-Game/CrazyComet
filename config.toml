@@ -1,7 +1,7 @@
 seat=1
 
 [CONTROLLER]
-input_device="/dev/input/event1"
+input_device="/dev/input/by-id/usb-ShanWan_Trust-GMP-04-event-joystick"
 
 [MQTT]
 broker_ip="10.3.141.1"

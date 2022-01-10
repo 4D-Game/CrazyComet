@@ -23,7 +23,7 @@ class ServoHAL(HAL):
 
         self.pin = pin
 
-        self.pwm = Servo(pin, initial_value=0, min_pulse_width=0.5 / 1000, max_pulse_width=2.5 / 1000)
+        self.pwm = Servo(pin, initial_value=0, min_pulse_width=0.615 / 1000, max_pulse_width=2.495 / 1000)
 
         logging.debug(f"Init turret at Pin {pin}")
 
@@ -35,7 +35,7 @@ class ServoHAL(HAL):
                 pos: Servoposition between -90 and 90
         """
         self.pwm.value = pos / 90
-        # logging.debug(f"Turret moved to pos {pos}")
+        #logging.info(f"Turret moved to pos {self.pwm.value}")
 
     def close(self):
         """
