@@ -1,40 +1,49 @@
 from hardware.hal import HAL
 import spidev
-import numpy  # numpy und spidev falls notwendig zu den requirements hinzufügen
+import numpy 
 
-"""
-    Docstrings!!!
-    Datentypen für alle Argumente der Funktionen und evtl. für Attribute der Klasse
-    Möglicherweise verwendung eines "gobalen" arrays self.data. So weiß das Programm
-    immer welche LEDs gerade was anzeigen und einzelne LEDs können geändert werden
-    ohne den Rest zu löschen
-"""
+class RgbLedHAL(HAL):
+    """
+        Class to manage RGB Leds
+    """
 
-# class RgbLedHAL(HAL):
-
-
-class RgbHAL(HAL):
     def __init__(self):
+        """
+            Configure SPI and RGB Leds
+        """
         self.spi = spidev.SpiDev()
         self.spi.open(0, 0)
+        self.data = []
+        for i in range(24):
+            self.data.append([0, 0, 0])
+        self.write_led(self.data) #no color at the beginning
 
-    # def write_leds(self, spi, data)
-    # spi argument notwendig?
-    def write2812(self, spi, data):
+    def write_led(self, data):
+        """
+            Set colors to one or more leds (depending on data parameter)
+
+            Parameters:
+                data: 2-dimensional array which includes rgb code of needed leds
+        """
         d = numpy.array(data).ravel()
         tx = numpy.zeros(len(d) * 4, dtype=numpy.uint8)
         for ibit in range(4):
             tx[3 - ibit::4] = ((d >> (2 * ibit + 1)) & 1) * 0x60 + ((d >> (2 * ibit + 0)) & 1) * 0x06 + 0x88
-        self.spi.xfer(tx.tolist(), int(4 / 1.25e-6))  # works, on Zero
+        self.spi.xfer(tx.tolist(), int(4 / 1.25e-6))  
 
-    # all_leds what??
-    def all_leds(self, rgb_code):
-        data = []
-        for i in range(24):
-            data.append(rgb_code)
-        return data
-        # self.write2812(self.spi, data)
+    def configure_all_leds(self, rgb_code):
+        """
+            Configure all leds to same rgb code
+
+            Parameter:
+                rgb_code: np.array which includes the rgb color code [RED, GREEN, BLUE]
+        """
+        for i in range(len(self.data)):
+            self.data[i] = [rgb_code]
+        self.write_led(self.data)
 
     def close(self):
-        data = self.all_leds([0, 0, 0])
-        self.write2812(self.spi, data)
+        """
+            Switch off leds 
+        """
+        self.configure_all_leds([0, 0, 0])
