@@ -32,18 +32,20 @@ class CrazyComet(Game):
         """
             Initialize controls
         """
+        rgb_leds = LEDControl()
 
         self.ready_control = KeyCode.BUT_1
         self.controls = {
             JoystickCode.LEFT_Y: VerticalTurretControl(
                 seat=1,
-                name="horizontal_control",
+                name="vertical_control",
                 pin=13,
                 offset=self.config['CrazyComet']['turrets']['vertical_offset']
+                rgb_cb=rgb_leds.display_joystick_pos()
             ),
             JoystickCode.LEFT_X: HorizontalTurretControl(
                 seat=1,
-                name="vertical_control",
+                name="horizontal_control",
                 pin=12,
                 offset=self.config['CrazyComet']['turrets']['horizontal_offset']
             ),
