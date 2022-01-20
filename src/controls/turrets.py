@@ -16,7 +16,7 @@ class TurretControl(Joystick):
             MIN_DEFLECTION: min deflection of the turret in degree
             MAPPING_FACTOR: used to scale the mapped turret position
             T: Delay of the PT1 element used to controll the turret position
-            THRESHHOLD: threshold under wich a joystick value is recognized as 0
+            THRESHHOLD: threshold under which a joystick value is recognized as 0
             servo: Instance of ServoHAL to control a servo
     """
 
@@ -30,7 +30,7 @@ class TurretControl(Joystick):
     _servo_pos = 0
     _position_task: Task = None
 
-    def __init__(self, seat: int, name: str, pin: int = 13, offset: int = 0):
+    def __init__(self, seat: int, name: str, pin: int = 13, offset: int = 0, rgb_cb: Callable = lambda _:None):
         """
             Arguments:
                 seat: controller seat
@@ -44,6 +44,8 @@ class TurretControl(Joystick):
 
         self.MIN_DEFLECTION += offset
         self.MAX_DEFLECTION += offset
+
+        self.rgb_cb = rgb_cb
 
         logging.info(f"Turret {self.name} initialized")
 
@@ -59,6 +61,7 @@ class TurretControl(Joystick):
         range = self.MAX_DEFLECTION - self.MIN_DEFLECTION
 
         self._joystick_pos = (((pos * self.MAPPING_FACTOR) + 1) / 2 * range + self.MIN_DEFLECTION)
+        self.rgb_cb(pos)
 
         logging.debug(f"Set position of Turret {self.name} to {self._joystick_pos}")
 
