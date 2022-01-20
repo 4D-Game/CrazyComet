@@ -21,4 +21,4 @@ class LEDControl():
                 pos: position of joystick, between -1 and 1
         """
         pos = pos * self.led_numbers
-        led.configure_individual_leds([10,0,10], pos)
+        self.led.configure_individual_leds([10,0,10], pos)
