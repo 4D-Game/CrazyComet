@@ -1,5 +1,5 @@
 [Unit]
-Description=4D Game controler software
+Description=4D Game controller software
 After=network.target pigpiod.service
 Wants=pigpiod.service
 StartLimitIntervalSec=0
@@ -7,8 +7,8 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=10
-Environment=GAME_MODULE=src.main
-WorkingDirectory=/home/pi/streamer
-ExecStart=/usr/bin/python3 -m $GAME_MODULE
+Environment=GAME_MODULE=src/main.py
+WorkingDirectory=/home/pi/controller
+ExecStart=/usr/bin/python3 $GAME_MODULE
 [Install]
 WantedBy=multi-user.target

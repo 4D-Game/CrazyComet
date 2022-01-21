@@ -9,6 +9,7 @@ from evdev import InputDevice, categorize, ecodes
 
 from game_sdk.controller.key_map.gamepad import BosiWirelessGXT590, JoystickCode, XBoxWireless
 from controls.turrets import HorizontalTurretControl, TurretControl, VerticalTurretControl
+from controls.leds import LEDControl
 
 
 Device.pin_factory = PiGPIOFactory()
@@ -17,11 +18,13 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 async def realJoystick():
     try:
-        input_dev = InputDevice("/dev/input/event0")
+        input_dev = InputDevice("/dev/input/by-id/usb-ShanWan_Trust-GMP-04-event-joystick")
+
+        rgb_leds = LEDControl()
 
         controls = {
             JoystickCode.LEFT_Y: VerticalTurretControl(1, "horizontal_control", 13),
-            JoystickCode.LEFT_X: HorizontalTurretControl(1, "vertical_control", 12)
+            JoystickCode.LEFT_X: HorizontalTurretControl(1, "vertical_control", 12, rgb_leds.display_joystick_pos)
         }
 
         for _, control in controls.items():

@@ -29,9 +29,9 @@ echo "Install gpiozero ---------------------------------------------------"
 sudo apt install python3-gpiozero -y
 sudo apt-get install python3-pigpio -y
 sleep 1
-"\nenable pygpiod"
+echo -e "\nenable pygpiod"
 sudo systemctl enable pygpiod
-sydo systemctl restart pygpiod
+sudo systemctl restart pygpiod
 echo ""
 
 # echo "Install display ---------------------------------------------------"
