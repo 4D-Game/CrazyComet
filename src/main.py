@@ -52,7 +52,7 @@ class CrazyComet(Game):
                 seat=self.config["seat"],
                 name="horizontal_control",
                 pin=12,
-                rgb_cb=self.rgb_leds.display_joystick_pos(),
+                rgb_cb=self.rgb_leds.display_joystick_pos,
                 offset=self.config['CrazyComet']['turrets']['horizontal_offset']
             ),
             KeyCode.R1: Blaster(
