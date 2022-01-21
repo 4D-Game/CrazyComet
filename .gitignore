@@ -5,4 +5,4 @@ __pycache__/
 site/
 ._site
 
-srtg.toml
+config.toml

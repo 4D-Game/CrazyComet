@@ -1,6 +1,7 @@
 import logging
 from hardware.led_hal import RgbLedHAL
 
+
 class LEDControl():
     """
         Control RGB Leds
@@ -8,10 +9,11 @@ class LEDControl():
 
     def __init__(self):
         """
-            Initializes RGB strip
+            Initializes RGB strip and turn all leds blue
         """
         self.led = RgbLedHAL()
-        self.led_numbers = 12 #half stripe
+        self.led_numbers = 12  # half stripe
+        self.all_leds_blue()
 
     def display_joystick_pos(self, pos):
         """
@@ -21,14 +23,20 @@ class LEDControl():
                 pos: position of joystick, between -1 and 1
         """
         pos = pos * self.led_numbers
-        self.led.configure_individual_leds([10,0,10], pos)
+        self.led.configure_individual_leds([10, 0, 10], pos)
+
+    def all_leds_blue(self):
+        """
+            Turns all led blue
+        """
+        self.led.configure_all_leds([10, 0, 10])
 
     def all_leds_green(self):
         """
             Turns all led green
         """
-        self.led.configure_all_leds([10,0,0])
-    
+        self.led.configure_all_leds([10, 0, 0])
+
     def switch_off_leds(self):
         """
             Switches all leds off
