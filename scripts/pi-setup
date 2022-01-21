@@ -29,9 +29,9 @@ echo "Install gpiozero ---------------------------------------------------"
 sudo apt-get install python3-gpiozero -y
 sudo apt-get install python3-pigpio -y
 sleep 1
-echo -e "\nenable pygpiod"
-sudo systemctl enable pygpiod
-sudo systemctl restart pygpiod
+echo -e "\nenable pigpiod"
+sudo systemctl enable pigpiod
+sudo systemctl restart pigpiod
 echo ""
 
 # echo "Install display ---------------------------------------------------"
@@ -40,4 +40,7 @@ echo ""
 # sudo pip3 install adafruit-circuitpython-rgb-display
 # sudo apt-get install python3-pil
 # echo ""
+
+echo "enable SPI ---------------------------------------------------------"
+sudo dtparam spi=on
 
