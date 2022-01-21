@@ -22,3 +22,15 @@ class LEDControl():
         """
         pos = pos * self.led_numbers
         self.led.configure_individual_leds([10,0,10], pos)
+
+    def all_leds_green(self):
+        """
+            Turns all led green
+        """
+        self.led.configure_all_leds([10,0,0])
+    
+    def switch_off_leds(self):
+        """
+            Switches all leds off
+        """
+        self.led.close()
