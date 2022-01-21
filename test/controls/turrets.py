@@ -24,7 +24,7 @@ async def realJoystick():
 
         controls = {
             JoystickCode.LEFT_Y: VerticalTurretControl(1, "horizontal_control", 13),
-            JoystickCode.LEFT_X: HorizontalTurretControl(1, "vertical_control", 12, rgb_leds.display_joystick_pos)
+            JoystickCode.LEFT_X: HorizontalTurretControl(1, "vertical_control", 12, rgb_cb = rgb_leds.display_joystick_pos)
         }
 
         for _, control in controls.items():
