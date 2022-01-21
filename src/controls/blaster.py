@@ -20,7 +20,7 @@ class Blaster(Switch):
     _shoot_lock = Lock()
     _reload_lock = Lock()
 
-    def __init__(self, seat: int, name: str, score_cb: Callable = None, magazine_size: int = 5):
+    def __init__(self, seat: int, name: str, score_cb: Callable = None, magazine_size: int = 5, inverted_logic: bool = False):
         """
             Arguments:
                 seat: controller seat
@@ -31,7 +31,7 @@ class Blaster(Switch):
 
         super().__init__(seat, name)
 
-        self.sensor: Button = Button(24, pull_up=True, active_state=None, bounce_time=None, pin_factory=None)
+        self.sensor: Button = Button(24, pull_up=inverted_logic)
         self.shoot_led: LED = LED(23)
         self.points_led: LED = LED(25)
 

@@ -7,8 +7,11 @@ input_device="/dev/input/by-id/usb-ShanWan_Trust-GMP-04-event-joystick"
 broker_ip="10.3.141.1"
 
 [CrazyComet]
-magazine_size=5
 
 [CrazyComet.turrets]
 vertical_offset=0
 horizontal_offset=0
+
+[CrazyComet.blaster]
+inverted_logic=true
+magazine_size=5

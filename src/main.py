@@ -51,7 +51,8 @@ class CrazyComet(Game):
                 seat=1,
                 name="Blaster",
                 score_cb=self.update_score,
-                magazine_size=self.config['CrazyComet']['magazine_size']
+                magazine_size=self.config['CrazyComet']['blaster']['magazine_size'],
+                inverted_logic=self.config['CrazyComet']['blaster']['inverted_logic']
             )
         }
 
