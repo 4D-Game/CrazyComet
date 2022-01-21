@@ -29,7 +29,7 @@ echo "Install gpiozero ---------------------------------------------------"
 sudo apt-get install python3-gpiozero -y
 sudo apt-get install python3-pigpio -y
 sleep 1
-"\nenable pygpiod"
+echo -e "\nenable pygpiod"
 sudo systemctl enable pygpiod
 sudo systemctl restart pygpiod
 echo ""
