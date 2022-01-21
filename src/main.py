@@ -16,8 +16,7 @@ from game_sdk.controller.key_map import JoystickCode, KeyCode
 from controls.blaster import Blaster
 from controls.turrets import HorizontalTurretControl, VerticalTurretControl
 from controls.leds import LEDControl
-
-
+from controls.ready import ReadyControl
 
 
 class CrazyComet(Game):
@@ -35,22 +34,25 @@ class CrazyComet(Game):
         """
             Initialize controls
         """
-        rgb_leds = LEDControl()
+        self.rgb_leds = LEDControl()
 
-        self.ready_control = KeyCode.BUT_1
+        self.ready_control = {
+            "key": KeyCode.BUT_1,
+            "input": ReadyControl(seat=self.config["seat"], name="Ready Control", led_ctl=self.rgb_leds)}
+
         self.controls = {
             JoystickCode.LEFT_Y: VerticalTurretControl(
-                seat=1,
+                seat=self.config["seat"],
                 name="vertical_control",
                 pin=13,
                 offset=self.config['CrazyComet']['turrets']['vertical_offset']
-                
+
             ),
             JoystickCode.LEFT_X: HorizontalTurretControl(
-                seat=1,
+                seat=self.config["seat"],
                 name="horizontal_control",
                 pin=12,
-                rgb_cb=rgb_leds.display_joystick_pos(),
+                rgb_cb=self.rgb_leds.display_joystick_pos(),
                 offset=self.config['CrazyComet']['turrets']['horizontal_offset']
             ),
             KeyCode.R1: Blaster(
