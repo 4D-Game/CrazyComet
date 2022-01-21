@@ -39,11 +39,38 @@ class RgbLedHAL(HAL):
                 rgb_code: np.array which includes the rgb color code [RED, GREEN, BLUE]
         """
         for i in range(len(self.data)):
-            self.data[i] = [rgb_code]
+            self.data[i] = rgb_code
+        self.write_led(self.data)
+
+    def configure_individual_leds(self, rgb_code, pixel):
+        """
+            Configures rgb strip with specific rgb code till determined led
+
+            Parameters:
+                rgb_code: np.array with the color code
+                pixel: how many leds should be changed
+        """
+        if pixel < 0:
+            count = -1
+            for i in range(len(self.data)):
+                if count >= pixel:
+                    self.data[count] = rgb_code
+                else:
+                    self.data[count] = [0, 0, 0]
+                count = count - 1
+        else:
+            count = 0
+            for i in range(len(self.data)):
+                if count < pixel:
+                    self.data[count] = rgb_code
+                else:
+                    self.data[count] = [0, 0, 0]
+                count = count + 1
+
         self.write_led(self.data)
 
     def close(self):
         """
-            Switch off leds 
+            Switch all leds off
         """
         self.configure_all_leds([0, 0, 0])
