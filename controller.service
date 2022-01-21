@@ -7,8 +7,6 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=10
-Environment=GAME_MODULE=src/main.py
-WorkingDirectory=/home/pi/controller
-ExecStart=/usr/bin/python3 $GAME_MODULE
+ExecStart=/usr/bin/python3 /home/pi/controller/src/main.py
 [Install]
 WantedBy=multi-user.target
