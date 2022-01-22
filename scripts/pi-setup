@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REL_PATH="$(dirname `which $0`)/.."
-PROJECT_PATH="$(cd $REL_PATH; pwd -P)/"
+PROJECT_PATH="$(cd $REL_PATH; pwd -P)"
 
 echo "Updatet packages ---------------------------------------------------------"
 sudo apt update
@@ -41,6 +41,6 @@ echo ""
 # sudo apt-get install python3-pil
 # echo ""
 
-echo "enable SPI ---------------------------------------------------------"
-sudo dtparam spi=on
+echo ""
+echo "!!! Please aktivate SPI in your /boot/config.txt !!!"
 

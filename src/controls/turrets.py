@@ -30,7 +30,7 @@ class TurretControl(Joystick):
     _servo_pos = 0
     _position_task: Task = None
 
-    def __init__(self, seat: int, name: str, pin: int = 13, offset: int = 0, rgb_cb: Callable = lambda _:None):
+    def __init__(self, seat: int, name: str, pin: int = 13, offset: int = 0, rgb_cb: Callable = lambda _: None):
         """
             Arguments:
                 seat: controller seat
@@ -136,8 +136,8 @@ class VerticalTurretControl(TurretControl):
             T: 0.02s (fast movement)
     """
 
-    MAX_DEFLECTION = 20
-    MIN_DEFLECTION = -40
+    MAX_DEFLECTION = 25
+    MIN_DEFLECTION = -35
     MAPPING_FACTOR = -1
     T = 0.025
 

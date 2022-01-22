@@ -7,6 +7,8 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=10
-ExecStart=/usr/bin/python3 /home/pi/controller/src/main.py
+Environment="PYTHONPATH=/home/pi/Controller/src:/home/pi/Controller/lib/sdk"
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/Controller/src/main.py
 [Install]
 WantedBy=multi-user.target
