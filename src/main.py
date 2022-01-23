@@ -71,6 +71,9 @@ class CrazyComet(Game):
 
         self.score = 0
 
+    async def on_end(self):
+        self.rgb_leds.all_leds_blue()
+
     async def on_exit(self, err: Exception = None):
         self.rgb_leds.switch_off_leds()
 
