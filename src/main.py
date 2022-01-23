@@ -71,6 +71,11 @@ class CrazyComet(Game):
 
         self.score = 0
 
+    async def on_exit(self, err: Exception = None):
+        self.rgb_leds.switch_off_leds()
+
+        return await super().on_exit(err)
+
 
 if __name__ == "__main__":
     Device.pin_factory = PiGPIOFactory()
