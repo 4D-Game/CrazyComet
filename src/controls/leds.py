@@ -1,3 +1,4 @@
+import asyncio
 import logging
 from hardware.led_hal import RgbLedHAL
 
@@ -36,17 +37,14 @@ class LEDControl():
             Turns all led green
         """
         self.led.configure_all_leds([10, 0, 0])
-    
-    def score_leds_on(self):
+
+    async def score_leds(self, time: float):
         """
-            Turns on score leds
+            Blink score leds
         """
-        self.led.led_score_on([10,0,0])
-    
-    def score_leds_off(self):
-        """
-            Turn off score leds
-        """
+
+        self.led.led_score_on([10, 0, 0])
+        asyncio.sleep(time)
         self.led.led_score_off()
 
     def switch_off_leds(self):

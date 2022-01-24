@@ -13,14 +13,13 @@ The sdk needed to use this program is stored in a submodule. To use it the follo
 ```bash
 git submodule init
 git submodule update
-git submodule foreach --recursive 'git checkout master'
 ```
 
 !!! INFO
     To update the sdk to the latest commit run
 
     ```bash
-    git submodule foreach --recursive 'git pull'
+    git submodule update --remote --merge
     ```
 
 ### PYTHONPATH

@@ -1,6 +1,6 @@
 import asyncio
 from asyncio import sleep, Lock
-from typing import Any, Callable
+from typing import Any, Callable, Coroutine
 from gpiozero import Button, LED
 import logging
 from game_sdk.controller.inputs import Switch
@@ -20,7 +20,7 @@ class Blaster(Switch):
     _shoot_lock = Lock()
     _reload_lock = Lock()
 
-    def __init__(self, seat: int, name: str, score_cb: Callable = None, magazine_size: int = 5, inverted_logic: bool = False):
+    def __init__(self, seat: int, name: str, score_cb: Callable = None, led_cb: Coroutine = None, magazine_size: int = 5, inverted_logic: bool = False):
         """
             Arguments:
                 seat: controller seat
@@ -36,6 +36,7 @@ class Blaster(Switch):
         self.points_led: LED = LED(25)
 
         self._score_cb = score_cb
+        self._led_cb = led_cb
 
         self._max_magazine = magazine_size
         self.magazine: int = magazine_size
@@ -59,6 +60,7 @@ class Blaster(Switch):
                 if self.sensor.is_pressed:
                     self.magazine = 0
                     asyncio.create_task(self._led_on(self.points_led, 1))
+                    asyncio.create_task(self._led_cb(1))
                     await self._score_cb()
 
         if not self._reload_lock.locked() and self.magazine <= 0:
