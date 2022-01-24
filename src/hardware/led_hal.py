@@ -42,6 +42,26 @@ class RgbLedHAL(HAL):
             self.data[i] = rgb_code
         self.write_led(self.data)
 
+    def led_score_on(self, rgb_code):
+        """
+            Turns on 4 led when player scores
+        """
+        self.data[0] = rgb_code
+        self.data[1] = rgb_code
+        self.data[-1] = rgb_code
+        self.data[-2] = rgb_code
+        self.write_led(self.data)
+
+    def led_score_off(self):
+        """
+            Turns off leds when player has scored
+        """
+        self.data[0] = [0,0,0]
+        self.data[1] = [0,0,0]
+        self.data[-1] = [0,0,0]
+        self.data[-2] = [0,0,0]
+        self.write_led(self.data)
+
     def configure_individual_leds(self, rgb_code, pixel):
         """
             Configures rgb strip with specific rgb code till determined led
@@ -51,16 +71,16 @@ class RgbLedHAL(HAL):
                 pixel: how many leds should be changed
         """
         if pixel < 0:
-            count = -1
-            for i in range(len(self.data)):
+            count = -3
+            for i in range(len(self.data)-3):
                 if count >= pixel:
                     self.data[count] = rgb_code
                 else:
                     self.data[count] = [0, 0, 0]
                 count = count - 1
         else:
-            count = 0
-            for i in range(len(self.data)):
+            count = 2
+            for i in range(len(self.data)-2):
                 if count < pixel:
                     self.data[count] = rgb_code
                 else:
