@@ -65,7 +65,7 @@ class Blaster(Switch):
 
         if not self._reload_lock.locked() and self.magazine <= 0:
             async with self._reload_lock:
-                await asyncio.sleep(1)
+                await asyncio.sleep(3)
                 async with self._shoot_lock:
                     self.magazine = self._max_magazine
 

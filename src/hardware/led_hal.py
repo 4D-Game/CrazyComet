@@ -1,6 +1,7 @@
 from hardware.hal import HAL
 import spidev
-import numpy 
+import numpy
+
 
 class RgbLedHAL(HAL):
     """
@@ -16,7 +17,7 @@ class RgbLedHAL(HAL):
         self.data = []
         for i in range(24):
             self.data.append([0, 0, 0])
-        self.write_led(self.data) #no color at the beginning
+        self.write_led(self.data)  # no color at the beginning
 
     def write_led(self, data):
         """
@@ -29,7 +30,7 @@ class RgbLedHAL(HAL):
         tx = numpy.zeros(len(d) * 4, dtype=numpy.uint8)
         for ibit in range(4):
             tx[3 - ibit::4] = ((d >> (2 * ibit + 1)) & 1) * 0x60 + ((d >> (2 * ibit + 0)) & 1) * 0x06 + 0x88
-        self.spi.xfer(tx.tolist(), int(4 / .65e-6))  
+        self.spi.xfer(tx.tolist(), int(4 / 1.2e-6))
 
     def configure_all_leds(self, rgb_code):
         """
@@ -56,10 +57,10 @@ class RgbLedHAL(HAL):
         """
             Turns off leds when player has scored
         """
-        self.data[0] = [0,0,0]
-        self.data[1] = [0,0,0]
-        self.data[-1] = [0,0,0]
-        self.data[-2] = [0,0,0]
+        self.data[0] = [0, 0, 0]
+        self.data[1] = [0, 0, 0]
+        self.data[-1] = [0, 0, 0]
+        self.data[-2] = [0, 0, 0]
         self.write_led(self.data)
 
     def configure_individual_leds(self, rgb_code, pixel):
@@ -72,7 +73,7 @@ class RgbLedHAL(HAL):
         """
         if pixel < 0:
             count = -3
-            for i in range(len(self.data)-3):
+            for i in range(len(self.data) - 3):
                 if count >= pixel:
                     self.data[count] = rgb_code
                 else:
@@ -80,7 +81,7 @@ class RgbLedHAL(HAL):
                 count = count - 1
         else:
             count = 2
-            for i in range(len(self.data)-2):
+            for i in range(len(self.data) - 2):
                 if count < pixel:
                     self.data[count] = rgb_code
                 else:

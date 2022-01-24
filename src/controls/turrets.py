@@ -136,8 +136,8 @@ class VerticalTurretControl(TurretControl):
             T: 0.02s (fast movement)
     """
 
-    MAX_DEFLECTION = 25
-    MIN_DEFLECTION = -35
+    MAX_DEFLECTION = 30
+    MIN_DEFLECTION = -20
     MAPPING_FACTOR = -1
     T = 0.025
 

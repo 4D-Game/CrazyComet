@@ -60,7 +60,8 @@ class CrazyComet(Game):
                 name="Blaster",
                 score_cb=self.update_score,
                 magazine_size=self.config['CrazyComet']['blaster']['magazine_size'],
-                inverted_logic=self.config['CrazyComet']['blaster']['inverted_logic']
+                inverted_logic=self.config['CrazyComet']['blaster']['inverted_logic'],
+                led_cb=self.rgb_leds.score_leds
             )
         }
 
