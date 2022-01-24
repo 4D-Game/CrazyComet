@@ -1,4 +1,4 @@
-from hal import HAL
+from hardware.hal import HAL
 import spidev
 import numpy 
 
