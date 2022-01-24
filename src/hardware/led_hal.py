@@ -1,4 +1,4 @@
-from hardware.hal import HAL
+from hal import HAL
 import spidev
 import numpy 
 
@@ -29,7 +29,7 @@ class RgbLedHAL(HAL):
         tx = numpy.zeros(len(d) * 4, dtype=numpy.uint8)
         for ibit in range(4):
             tx[3 - ibit::4] = ((d >> (2 * ibit + 1)) & 1) * 0x60 + ((d >> (2 * ibit + 0)) & 1) * 0x06 + 0x88
-        self.spi.xfer(tx.tolist(), int(4 / 1.25e-6))  
+        self.spi.xfer(tx.tolist(), int(4 / .65e-6))  
 
     def configure_all_leds(self, rgb_code):
         """
