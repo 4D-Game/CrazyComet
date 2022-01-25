@@ -1,13 +1,16 @@
 import logging
 
 from gpiozero import Servo
+<< << << < Updated upstream
 from gpiozero.pins.native import NativeFactory
 from hardware.hal import HAL
+== == == =
+>>>>>> > Stashed changes
 
 
 class ServoHAL(HAL):
     """
-        Hardware interface to control the turrets
+        Hardware interface to control the servos for the turrets
 
         Attributes:
             pin: number of the GPIO pin used to control the turret
@@ -43,3 +46,22 @@ class ServoHAL(HAL):
         """
         self.pwm.value = None
         logging.debug(f"Turret interface closed")
+
+
+class ServoInvertedHAL(ServoHAL):
+    """
+        Hardware interface to control inverted servos for the turrets
+
+        Attributes:
+            pin: number of the GPIO pin used to control the turret
+    """
+
+    def setPosition(self, pos: int):
+        """
+            Trigger Turret with specific force
+
+            Arguments:
+                force: Turretposition between -90 and 90
+        """
+
+        self.pwm.value = -1 * pos / 90

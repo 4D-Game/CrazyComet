@@ -2,7 +2,7 @@ from asyncio import sleep, create_task
 from asyncio.tasks import Task
 from typing import List, Callable
 from hardware import servo
-from hardware.servo import ServoHAL
+from hardware.servo import ServoHAL, ServoInvertedHAL
 from game_sdk.controller.inputs import Joystick
 import logging
 
@@ -30,7 +30,7 @@ class TurretControl(Joystick):
     _servo_pos = 0
     _position_task: Task = None
 
-    def __init__(self, seat: int, name: str, pin: int = 13, offset: int = 0, rgb_cb: Callable = lambda _: None):
+    def __init__(self, seat: int, name: str, pin: int, config: dict, rgb_cb: Callable = lambda _: None):
         """
             Arguments:
                 seat: controller seat
@@ -40,10 +40,11 @@ class TurretControl(Joystick):
         """
 
         super().__init__(seat, name)
-        self.servo: ServoHAL = ServoHAL(pin)
 
-        self.MIN_DEFLECTION += offset
-        self.MAX_DEFLECTION += offset
+        self.servo: ServoHAL = ServoInvertedHAL(pin) if config["inverted"] else ServoHAL(pin)
+
+        self.MIN_DEFLECTION += config["offset"]
+        self.MAX_DEFLECTION += config["offset"]
 
         self.rgb_cb = rgb_cb
 
@@ -130,8 +131,8 @@ class VerticalTurretControl(TurretControl):
         Turret control for the vertical dimension with custom parameters
 
         Attributes:
-            MAX_DEFLECTION: 20° bottom maximum
-            MIN_DEFLECTION: -40° top maximum
+            MAX_DEFLECTION: 30° bottom maximum
+            MIN_DEFLECTION: -20° top maximum
             MAPPING_FACTOR: 1 (no scaling)
             T: 0.02s (fast movement)
     """
@@ -152,6 +153,7 @@ class HorizontalTurretControl(TurretControl):
             MAPPING_FACTOR: -1 (invert)
             T: 0.04s (slower moevement)
     """
+
     MAX_DEFLECTION = 30
     MIN_DEFLECTION = -30
     MAPPING_FACTOR = 1

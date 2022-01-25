@@ -4,6 +4,7 @@
 Entrypoint for the Controller programm
 """
 
+from distutils.command.config import config
 import logging
 
 from gpiozero import Device
@@ -45,7 +46,7 @@ class CrazyComet(Game):
                 seat=self.config["seat"],
                 name="vertical_control",
                 pin=13,
-                offset=self.config['CrazyComet']['turrets']['vertical_offset']
+                config=self.config['CrazyComet']['turrets']['vertical']
 
             ),
             JoystickCode.LEFT_X: HorizontalTurretControl(
@@ -53,7 +54,7 @@ class CrazyComet(Game):
                 name="horizontal_control",
                 pin=12,
                 rgb_cb=self.rgb_leds.display_joystick_pos,
-                offset=self.config['CrazyComet']['turrets']['horizontal_offset']
+                config=self.config['CrazyComet']['turrets']['horizontal']
             ),
             KeyCode.R1: Blaster(
                 seat=1,
