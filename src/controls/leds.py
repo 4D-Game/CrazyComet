@@ -44,7 +44,7 @@ class LEDControl():
         """
 
         self.led.led_score_on([10, 0, 0])
-        asyncio.sleep(time)
+        await asyncio.sleep(time)
         self.led.led_score_off()
 
     def switch_off_leds(self):
