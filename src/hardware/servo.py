@@ -1,11 +1,8 @@
 import logging
 
 from gpiozero import Servo
-<< << << < Updated upstream
 from gpiozero.pins.native import NativeFactory
 from hardware.hal import HAL
-== == == =
->>>>>> > Stashed changes
 
 
 class ServoHAL(HAL):
