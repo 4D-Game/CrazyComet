@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import asyncio
+from distutils.command.config import config
 import logging
 
 from gpiozero import Device
@@ -23,8 +24,8 @@ async def realJoystick():
         rgb_leds = LEDControl()
 
         controls = {
-            JoystickCode.LEFT_Y: VerticalTurretControl(1, "horizontal_control", 13),
-            JoystickCode.LEFT_X: HorizontalTurretControl(1, "vertical_control", 12, rgb_cb = rgb_leds.display_joystick_pos)
+            JoystickCode.LEFT_Y: VerticalTurretControl(1, "horizontal_control", 13, config={"inverted": True}),
+            JoystickCode.LEFT_X: HorizontalTurretControl(1, "vertical_control", 12, rgb_cb=rgb_leds.display_joystick_pos, config={})
         }
 
         for _, control in controls.items():
