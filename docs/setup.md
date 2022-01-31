@@ -9,7 +9,7 @@ To setup everything needed, to run the game there is a setup script, wich can be
 scripts/pi-setup
 ```
 
-After this you have to activate SPI by adding `dtparam=spi=on` to the `boot/config.txt`. Next the Raspberry Pi needs to be rebooted.
+After this you have to activate SPI by adding `dtparam=spi=on` to the *boot/config.txt*. Next the Raspberry Pi needs to be rebooted.
 
 ### Manual
 #### SDK
@@ -45,7 +45,7 @@ pip3 install -Ur requirements.txt
 
 #### SPI
 
-The Programm uses SPI to control the LED's of the turrets. Enable SPI by adding `dtparam=spi=on` to the *boot/config.txt`. This activates SPI after the next reboot.
+The Programm uses SPI to control the LED's of the turrets. Enable SPI by adding `dtparam=spi=on` to the *boot/config.txt*. This activates SPI after the next reboot.
 
 ## Autostart
 

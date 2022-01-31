@@ -21,6 +21,13 @@ from controls.ready import ReadyControl
 
 
 class CrazyComet(Game):
+    """
+        Game class for the controller
+
+        Attributes:
+            score: Score of this player
+    """
+
     score: int = 0
 
     async def update_score(self):

@@ -8,6 +8,7 @@ nav:
       - Controller:
           - Overview: index.md
           - Setup: setup.md
+          - Config file: config-file.md
           - Code References:
               - Main: code-references/main.md
               - Controls:
