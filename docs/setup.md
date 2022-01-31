@@ -1,12 +1,18 @@
 # Controller Setup
 
-## Development
+## Setup
+### Setup script
 
-To write code and generate the documentation you need to install the packages listed in `requirements.txt` with `pip`
+To setup everything needed, to run the game there is a setup script, wich can be executed with the following command:
 
 ```bash
-pip3 install -r requirements.txt
+scripts/pi-setup
 ```
+
+After this you have to activate SPI by adding `dtparam=spi=on` to the `boot/config.txt`. Next the Raspberry Pi needs to be rebooted.
+
+### Manual
+#### SDK
 
 The sdk needed to use this program is stored in a submodule. To use it the following commands should be executed:
 
@@ -22,14 +28,31 @@ git submodule update
     git submodule update --remote --merge
     ```
 
-### PYTHONPATH
-To use the `4DGame` SDK you have do add the `lib` folder to your `PYTHONPATH` variable.
-Additionally add the `src` folder to your `PYTHONPATH` for nicer imports and automatic documentation.
+#### PYTHONPATH
+Add the `src` and `lib/sdk` folder to your `PYTHONPATH`
 
 ```bash
 export PYTHONPATH="$(pwd)/src:$(pwd)/lib/sdk"
 ```
-### Documentation
+
+#### Python Dependencies
+
+In order to install all python dependencies run:
+
+```bash
+pip3 install -Ur requirements.txt
+```
+
+#### SPI
+
+The Programm uses SPI to control the LED's of the turrets. Enable SPI by adding `dtparam=spi=on` to the *boot/config.txt`. This activates SPI after the next reboot.
+
+## Autostart
+
+The game can be started automatically using `systemd`. Register the *controller.service* by executing the script `scripts/systemd-setup`.
+
+## Documentation
+
 The Documentation is generated with the help of [mkdocstrings](https://mkdocstrings.github.io/#). To implement a module, class or function into your documentation you have to reference it as follows:
 
 ```md
@@ -39,13 +62,3 @@ The Documentation is generated with the help of [mkdocstrings](https://mkdocstri
 
 ::: library.module.function
 ```
-
-## On Device
-
-For the usage on Device the packages listed in `requirements.txt` should be installed:
-
-```bash
-pip install -r requirements.txt
-```
-
-Next setup the controller service with `scripts/systemd-setup`

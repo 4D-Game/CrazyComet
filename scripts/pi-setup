@@ -8,6 +8,11 @@ sudo apt update
 sudo apt upgrade -y
 echo ""
 
+echo "Initialize Submodule -----------------------------------------------------"
+git submodule init
+git submodule update
+echo ""
+
 echo "Setup Shell environment --------------------------------------------------"
 echo "export PYTHONPATH=$PROJECT_PATH/src:$PROJECT_PATH/lib/sdk" >> ~/.profile
 source ~/.profile

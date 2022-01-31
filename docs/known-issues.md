@@ -10,7 +10,3 @@ Can't initialise pigpio library
 ```
 
 This issue occurs because of problems with your hostname make sure the hostnames in `/etc/hostname` and `/etc/hosts` are the same.
-
-## SPI
-
-In order to use SPI it needs to be activated in `/boot/config.txt`

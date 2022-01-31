@@ -11,10 +11,13 @@ nav:
           - Code References:
               - Main: code-references/main.md
               - Controls:
-                  - Turrets: code-references/controls/turrets.md
                   - Blaster: code-references/controls/blaster.md
+                  - LEDs: code-references/controls/leds.md
+                  - Ready: code-references/controls/ready.md
+                  - Turrets: code-references/controls/turrets.md
               - Hardware:
                   - HAL: code-references/hardware/hal.md
+                  - LED: code-references/hardware/led_hal.md
                   - Servo: code-references/hardware/servo.md
           - Known Issues: known-issues.md
       - Gamecontrol: https://4d-game.github.io/Gamecontrol/
