@@ -1,18 +1,19 @@
-site_name: ECE Projekt - Crazy Comet
+site_name: ECE Project - Crazy Comet
 nav:
   - Home:
       - Instructions: index.md
-      - Assembly: assembly.md
+      - Setup: setup.md
+  - Working on this Project:
+      - Game Concept: game_concept.md
+      - Coding Style:
+          - Python: coding-style/python.md
+          - GIT: coding-style/git.md
       - Documentation: documentation.md
-  - Coding Style:
-      - C++: coding-style/cpp.md
-      - Python: coding-style/python.md
-      - GIT: coding-style/git.md
   - Game Code:
       - Controller: https://4d-game.github.io/Controller/
       - Gamecontrol: https://4d-game.github.io/Gamecontrol/
+  - Game Hardware: https://4d-game.github.io/Hardware
   - SDK: https://4d-game.github.io/sdk/
-  - Hardware: https://4d-game.github.io/Hardware
 
 repo_url: https://github.com/4D-Game/4D-Game.github.io
 repo_name: '4D-Game/Documentation'

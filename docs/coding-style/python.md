@@ -25,7 +25,7 @@ Global variables should be defined in a **snake_case** style, when possible at t
 *Example:*
 ```py
 global_variable
-__private_global_variable__
+_private_global_variable
 ```
 
 **Local variables** are defined, initially set and consumed within a function, method or block. These variables lifetime is confined within the lifetime (time of execution) of a function (method or block).
@@ -65,7 +65,7 @@ class Car:
     brand
     max_speed
     power
-    __current_speed
+    _current_speed
 
     def __init__(self, ini_brand, ini_speed, ini_power){
        self.brand = ini_brand

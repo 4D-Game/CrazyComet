@@ -1,6 +1,6 @@
-# Game-instructions
+# CrazyComet Instructions
 
-## Game-preparation
+## Preparation
 
 Before starting the game a test calibration is accomplished. This test zeros every motor in order to function right. The teams get selected.
 
@@ -16,10 +16,9 @@ Every player gets assigned to a turret with the associated controller. The playe
 
 The game ends as soon as the time is over. The points are evaluated and the team with the more points win.
 
-## Controller-settings
+## Controlls
 
-- left joystick: controll lower turret servo
-- right joystick: controll upper turret servo
-- RT: shooting
+- **left joystick:** controll turret
+- **RT:** shooting
 
 

@@ -9,7 +9,3 @@ In order to achieve a uniform naming for commit messages the following **commit 
 | REMOVE  | Is used whenever a major part of the code is removed. This scenario should be rater infrequent. **e.g.** `git commit -m "REMOVE variable XY"` |
 | FIX     | Used for minor changes of an already existing part of the code. **e.g** `git commit -m "FIX functionality of XY"`                             |
 | UPDATE  | Is used when there is a major change in multiple code-segments. **e.g** `git commit -m "UPDATE setup of analog sensors"`                      |
-
-## Branch Setup
-
-There is more to come
