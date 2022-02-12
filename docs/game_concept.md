@@ -10,7 +10,7 @@ An object rotating in a circle or bobbing up and down must be shot down with a t
 The middle part is constructed with two steppers motors (see hardware documentation) to achieve a rotating and tilting movement. The turret is controlled by a raspberry pi.
 ## Turrets
 
-The turrets are operating with two servo motors. The lower one creates the horizontal and the upper one the vertical movement. The upper servo motor also controls the position of the laser. The turrets can be controlled by the controller (see controller setting in instructions). Two LEDs are also integrated in this 3D-Print. (Red LED: lights while shooting, Greed LED: after hitting the target). The turrets are controlled by another raspberry pi.
+The turrets are operating with two servo motors. The lower one creates the horizontal and the upper one the vertical movement. The upper servo motor also controls the position of the laser. The turrets can be controlled by the controller (see controller setting in instructions). Two LEDs are also integrated in this 3D-Print. (Red LED: lights while shooting, Green LED: after hitting the target). The turrets are controlled by another raspberry pi.
 
 ## Display
 

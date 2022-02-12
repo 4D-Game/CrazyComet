@@ -1,6 +1,6 @@
 # Python Coding Style
 
-Next to consistency as a main aspect of good code, the second most important aspect is a certain style which the average `python` programmer is capable to read and understand properly. Therefore the following documents states the essential naming conventions.
+Besides consistency as a main aspect of good code, the second most important aspect is a certain style which the average `python` programmer is capable to read and understand properly. Therefore the following documents states the essential naming conventions.
 > Here is a link for a more detailed dive into the [`PEP8 - Style Guide for Python Code'](https://www.python.org/dev/peps/pep-0008/)
 
 ## Naming conventions
@@ -35,7 +35,7 @@ local_variable
 ```
 
 ### Constants
-Constants are expressions with a fixed value. They are defined on a global (modul) level. The naming convention for constants prescribes that all letters are upper case letters with snake case subdivision
+Constants are expressions with a fixed value. They are defined on a global (modul) level. The naming convention for constants prescribes that all letters are upper case letters with snake case subdivision.
 
 *Example:*
 ```py
@@ -43,7 +43,7 @@ PI_VALUE = 3.14159
 ```
 
 ### Functions
-Functions should be named in **snake_case** like variables. Eventhough Python isn't strictly typesafe it ist good practice to define a return-type and the type of the parameters
+Functions should be named in **snake_case** like variables. Even though Python isn't strictly typesafe it is good practice to define a return-type and the type of the parameters.
 
 *Example:*
 ```py
@@ -77,7 +77,7 @@ class Car:
 ### Comments
 If the section of code is not clearly understandable there should be a short description of the current function in form of a comment.
 
-*Example*
+*Example:*
 ```py
 # divides up two double values
 def division(dividend: float, divisor: float) -> float:
