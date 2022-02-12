@@ -32,14 +32,14 @@ magazine_size=5
 
 Contains every configuration needed for the CrazyComet game.
 
-### Turrets
+### CrazyComet.turrets
 
 Consists of configuration for vertical and horizontal movement of the turrets. The options for both dimensions are similar.
 
 - `float offset`: Offset for the servo during the game. For easier calibration of the zero position.
 - `bool inverted`: Defines if the used servo is inverted or not.
 
-### Blaster
+### CrazyComet.blaster
 
 Configuration for the blaster logic as well as the sensor used to detect a hit.
 

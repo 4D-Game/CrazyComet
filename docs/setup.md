@@ -3,7 +3,7 @@
 ## Setup
 ### Setup script
 
-To setup everything needed, to run the game there is a setup script, wich can be executed with the following command:
+To setup everything needed, to run the game there is a setup script, which can be executed with the following command:
 
 ```bash
 scripts/pi-setup

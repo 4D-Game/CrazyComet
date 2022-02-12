@@ -9,7 +9,7 @@ import logging
 
 class TurretControl(Joystick):
     """
-        Baseclass, to control one dimension of the turret with a joystick
+        Base class, to control one dimension of the turret with a joystick
 
         Attributes:
             MAX_DEFLECTION: max deflection of the turret in degree
@@ -52,7 +52,7 @@ class TurretControl(Joystick):
 
     async def get_direction(self, seat: int, pos: float):
         """
-            Set turretposition whenn the mouseposition changed on
+            Set turretposition whenn the joystick position changes
 
             Arguments:
                 seat: number of the seat

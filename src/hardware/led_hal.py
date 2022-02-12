@@ -65,7 +65,7 @@ class RgbLedHAL(HAL):
 
     def configure_individual_leds(self, rgb_code, pixel):
         """
-            Configures rgb strip with specific rgb code till determined led
+            Configures RGB color for LED stripe until the given pixel
 
             Parameters:
                 rgb_code: np.array with the color code

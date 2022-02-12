@@ -12,8 +12,8 @@ class Blaster(Switch):
 
         Attributes:
             sensor: Sensor, which detects the hits
-            shoot_led: LED wich blinks on every shot
-            points_led: LED wich blinks when a hit detected
+            shoot_led: LED which blinks on every shot
+            points_led: LED which blinks when a hit detected
             magazine: Number of shots left in the magazine
     """
 

@@ -18,7 +18,7 @@ class ServoHAL(HAL):
             Initialize servo
 
             Arguments:
-                pin: Pin to wich the signal wire of the servo is connected (12, 13, 18, 19 for hardware PWM)
+                pin: Pin to which the signal wire of the servo is connected (12, 13, 18, 19 for hardware PWM)
         """
 
         self.pin = pin

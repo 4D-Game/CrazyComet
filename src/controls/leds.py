@@ -5,7 +5,7 @@ from hardware.led_hal import RgbLedHAL
 
 class LEDControl():
     """
-        Control RGB Leds
+        Control RGB LEDs
     """
 
     def __init__(self):
@@ -18,7 +18,7 @@ class LEDControl():
 
     def display_joystick_pos(self, pos):
         """
-            Switch leds on and off depending on joystick position
+            Switch LEDs on and off depending on joystick position
 
             Parameters:
                 pos: position of joystick, between -1 and 1
@@ -28,19 +28,19 @@ class LEDControl():
 
     def all_leds_blue(self):
         """
-            Turns all led blue
+            Turns all LEDs blue
         """
         self.led.configure_all_leds([10, 0, 10])
 
     def all_leds_green(self):
         """
-            Turns all led green
+            Turns all LEDs green
         """
         self.led.configure_all_leds([10, 0, 0])
 
     async def score_leds(self, time: float):
         """
-            Blink score leds
+            Blink score LEDs
         """
 
         self.led.led_score_on([10, 0, 0])
@@ -49,6 +49,6 @@ class LEDControl():
 
     def switch_off_leds(self):
         """
-            Switches all leds off
+            Switches all LEDs off
         """
         self.led.close()
