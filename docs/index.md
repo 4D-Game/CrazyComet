@@ -1,5 +1,6 @@
 # CrazyComet Instructions
 
+![CrazyComet Game](assets/game_top_view.png)
 ## Preparation
 
 Before starting the game a test calibration is accomplished in order to reset the position of the comets.
