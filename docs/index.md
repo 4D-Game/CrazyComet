@@ -15,7 +15,7 @@ Every player gets assigned to a turret with the associated controller. The playe
 
 ## Game-end
 
-The game ends as soon as one team reaches ten points the game ends. The team with ten points wins.
+The game ends as soon as one team reaches ten points. The team with ten points wins.
 
 ## Controls
 

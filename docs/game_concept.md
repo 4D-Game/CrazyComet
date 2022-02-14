@@ -18,7 +18,7 @@ The displays show the points of every team and are controlled by another raspber
 
 ## Usefull Links
 
-In order to work with/on this project the folowing links might be helpfull
+In order to work with/on this project the following links might be helpful
 
 - [Game Code](https://4d-game.github.io/Controller)
 - [Hardware](https://4d-game.github.io/Hardware)
