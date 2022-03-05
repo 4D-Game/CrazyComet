@@ -1,0 +1,71 @@
+#!/bin/bash
+
+
+REL_PATH="$(dirname `which $0`)/.."
+PROJECT_PATH="$(cd $REL_PATH; pwd -P)"
+
+echo "Updatet packages ---------------------------------------------------------"
+sudo apt update
+sudo apt upgrade -y
+echo ""
+
+echo "Initialize Submodules ----------------------------------------------------------"
+git submodule init
+git submodule update
+echo ""
+
+echo "Setup Shell environment --------------------------------------------------"
+touch ~/.profile
+echo "export PYTHONPATH=$PROJECT_PATH/src:$PROJECT_PATH/lib/sdk" >> ~/.profile
+echo "export PATH=/home/$USER/.local/bin:$PATH"
+source ~/.profile
+echo ""
+
+echo "Install Python and Pip ---------------------------------------------------"
+sudo apt install python3 python3-pip -y
+echo ""
+
+echo "Install Docker -----------------------------------------------------------"
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker $USER # Add active user to docker group
+rm get-docker.sh
+echo ""
+
+echo "Install Docker-Compose ---------------------------------------------------"
+sudo apt-get install libffi-dev libssl-dev
+sudo apt install python3-dev
+sudo pip3 install docker-compose
+echo ""
+
+echo "Run Docker Container -----------------------------------------------------"
+sudo docker-compose up -d
+echo ""
+
+echo "Install Raspap -----------------------------------------------------------"
+curl -sL https://install.raspap.com | bash
+echo ""
+
+echo "Install requirements -----------------------------------------------------"
+pip3 install -Ur requirements.txt
+echo ""
+
+echo "Install and activation I2C ------------------------------------------------" # check open
+sudo apt-get install -y python3-smbus
+sudo apt-get install -y i2c-tools
+sudo modprobe i2c-dev
+echo ""
+
+echo "Install pigpio lib" #check open
+#pip install pigpio
+sudo apt-get install python3-gpiozero -y
+sudo apt-get install python3-pigpio -y
+sleep 1
+echo -e "\nenable pigpiod"
+sudo systemctl enable pigpiod
+sudo systemctl restart pigpiod
+echo ""
+
+echo ""
+echo "!!! Please aktivate I2C in your /boot/config.txt !!!"
+echo "!!! Set the I2C speed to 1 MHz !!!"
