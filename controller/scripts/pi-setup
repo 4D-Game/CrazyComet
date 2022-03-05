@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REL_PATH="$(dirname `which $0`)/.."
+REL_PATH="$(dirname `which $0`)/../.."
 PROJECT_PATH="$(cd $REL_PATH; pwd -P)"
 
 echo "Updatet packages ---------------------------------------------------------"
@@ -14,7 +14,7 @@ git submodule update
 echo ""
 
 echo "Setup Shell environment --------------------------------------------------"
-echo "export PYTHONPATH=$PROJECT_PATH/src:$PROJECT_PATH/lib/sdk" >> ~/.profile
+echo "export PYTHONPATH=$PROJECT_PATH/controller:$PROJECT_PATH/sdk" >> ~/.profile
 source ~/.profile
 echo ""
 
