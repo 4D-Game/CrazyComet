@@ -1,0 +1,55 @@
+site_name: ECE Project - Crazy Comet
+nav:
+  - Home:
+      - Instructions: index.md
+      - Setup: setup.md
+  - Working on this Project:
+      - Game Concept: game_concept.md
+      - Coding Style:
+          - Python: coding-style/python.md
+          - GIT: coding-style/git.md
+      - Documentation: documentation.md
+  - Game Code:
+      - Controller: https://4d-game.github.io/Controller/
+      - Gamecontrol: https://4d-game.github.io/Gamecontrol/
+  - Game Hardware: https://4d-game.github.io/Hardware
+  - SDK: https://4d-game.github.io/sdk/
+
+repo_url: https://github.com/4D-Game/4D-Game.github.io
+repo_name: '4D-Game/Documentation'
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.top
+  palette:
+    # - scheme: default
+    #   primary: light blue
+    #   toggle:
+    #     icon: material/toggle-switch-off-outline
+    #     name: Switch to dark mode
+    - scheme: slate
+      primary: light blue
+      # toggle:
+      #   icon: material/toggle-switch
+      #   name: Switch to light mode
+
+plugins:
+  - search
+  - mermaid2:
+      arguments:
+        theme: 'dark'
+
+markdown_extensions:
+  - pymdownx.highlight
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
