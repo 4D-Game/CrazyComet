@@ -20,8 +20,8 @@ The displays show the points of every team and are controlled by another raspber
 
 In order to work with/on this project the following links might be helpful
 
-- [Game Code](https://4d-game.github.io/Controller)
-- [Hardware](https://4d-game.github.io/Hardware)
-- [4D-Game SDK](https://4d-game.github.io/sdk/)
+- [Game Code](controller/index.md)
+- [Hardware](hardware/index.md)
+- [4D-Game SDK](sdk/index.md)
 - [Documentation](documentation.md)
 - [Coding Style](coding-style/python.md)

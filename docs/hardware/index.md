@@ -1,10 +1,10 @@
 The CrazyComet playing field is build out of three major parts:
 
-- [<span style="color:#FF9100">Display</span>](hardware/display.md)
-- [<span style="color:#00BFA5">Tower</span>](hardware/tower.md)
-- [<span style="color:#672AFF">Turrets</span>](hardware/turrets.md)
+- [<span style="color:#FF9100">Display</span>](display.md)
+- [<span style="color:#00BFA5">Tower</span>](tower.md)
+- [<span style="color:#672AFF">Turrets</span>](turrets.md)
 
-![View from the side](hardware/pictures/game_top_view_marked.png)
+![View from the side](/assets/hardware/pictures/game_top_view_marked.png)
 
 In this section of the documentation it is explained how each of those elements is constructed.
 
@@ -17,6 +17,6 @@ All connection cables are aligned on the bottom of the base plate. A hole to rou
 For the ground plane to stand properly three M6 threaded bore holes are provided every 450mm.
 
 <figure markdown>
-  ![Base Plate](hardware/models/base_plate/base_plate.png){ width="400" }
+  ![Base Plate](/assets/hardware/models/base_plate/base_plate.png){ width="400" }
   <figcaption>3D-Model of the base plate</figcaption>
 </figure>

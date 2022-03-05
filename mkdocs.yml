@@ -25,7 +25,7 @@ nav:
                   - HAL: controller/code-references/hardware/hal.md
                   - LED: controller/code-references/hardware/led_hal.md
                   - Servo: controller/code-references/hardware/servo.md
-          - Known Issues: gamecontrol/known-issues.md
+          - Known Issues: controller/known-issues.md
       - Gamecontrol:
           - Overview: gamecontrol/index.md
           - Gamecontrol Setup: gamecontrol/setup.md
@@ -103,6 +103,7 @@ theme:
 
 plugins:
   - search
+  - mkdocstrings:
   - mermaid2:
       arguments:
         theme: 'dark'

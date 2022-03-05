@@ -163,19 +163,19 @@ Then you can access the control panel by navigating to **10.3.141.1** in your we
 #### Change hotspot credentials
 
 The SSID and password of the hotspot can be changed as shown in the pictures below:
-![Set Hotspot SSID](assets/raspap-setup/01-set-ssid.png)
-![Set Hotspot Password](assets/raspap-setup/02-set-secret.png)
+![Set Hotspot SSID](/assets/raspap-setup/01-set-ssid.png)
+![Set Hotspot Password](/assets/raspap-setup/02-set-secret.png)
 
 ??? WARNING "Set the country code"
     Make sure, to set your country code in the advanced hotspot settings.
-    ![Set Country Code](assets/raspap-setup/03-set-country.png)
+    ![Set Country Code](/assets/raspap-setup/03-set-country.png)
 
 For the settings to take effect, you have to save everything and then restart the hotspot.
 
 #### Change control panel login
 
 The login of the control panel can be changed in the tab *Authentication* as schown in the following picture:
-![Set control panel login](assets/raspap-setup/04-set-controlpanel-login.png)
+![Set control panel login](/assets/raspap-setup/04-set-controlpanel-login.png)
 
 ### Autostart
 

@@ -4,9 +4,9 @@ The *Gamecontrol* repository contains the code for the Raspberry Pi which contro
 
 ## Structure
 
-The entry point for the gamecontrol is the `CrazyComet` class in *src/main.py*. This is a subclass of `Game` from `game_sdk.gamecontrol` (See the [sdk documentation](sdk/index.md)). To start the game `CrazyComet.run()` is executed.
+The entry point for the gamecontrol is the `CrazyComet` class in *src/main.py*. This is a subclass of `Game` from `game_sdk.gamecontrol` (See the [sdk documentation](../sdk/index.md)). To start the game `CrazyComet.run()` is executed.
 
-The entry point for the display is the `Display` class in *src/display.py*. It is a subclass of `Game` from `game_sdk.passive` (See the [sdk documentation](sdk/index.md)). To start the game `Display.run()` is executed.
+The entry point for the display is the `Display` class in *src/display.py*. It is a subclass of `Game` from `game_sdk.passive` (See the [sdk documentation](../sdk/index.md)). To start the game `Display.run()` is executed.
 
 Apart from this the *src* folder consists of a *hardware*, *controls*, *fonts* and *assets* folder which will be explained below.
 

@@ -3,7 +3,7 @@
 
 The turrets are controlled by the player. They are used to "shoot" the comets. In the current setup six turrets are used.
 
-![Turret from different views](hardware/pictures/turret.png)
+![Turret from different views](/assets/hardware/pictures/turret.png)
 
 
 ## Construction
@@ -24,7 +24,7 @@ NEOPIXEL LED ring.
 
 ### Adapted 3D-Models of turrets
 
-![CAD models of all turret parts](hardware/models/turrets/turret_models_grid.png)
+![CAD models of all turret parts](/assets/hardware/models/turrets/turret_models_grid.png)
 ### Adaptations
 
 This model was not configured for our servo motors. Therefore, every part of
@@ -37,9 +37,9 @@ Blaster Model was created.
 - Blaster: New Model which held the Laser sensor, In addition, two LEDs are
 used to display if the player shot (white) and if he hit (green). Both LEDs are positioned at the tip of the barrel of the turret.
 
-![CAD model of the turret](hardware/models/turrets/turret_final.png)
+![CAD model of the turret](/assets/hardware/models/turrets/turret_final.png)
 
-![CAD Sketch of the turret](hardware/models/turrets/turret_final_sketch.png)
+![CAD Sketch of the turret](/assets/hardware/models/turrets/turret_final_sketch.png)
 
 ## Technical characteristics
 
@@ -53,16 +53,16 @@ used to display if the player shot (white) and if he hit (green). Both LEDs are 
 
 ### Circuit (connection ot Raspberry Pi)
 
-![Turrets circuit](hardware/circuit/turret.png)
+![Turrets circuit](/assets/hardware/circuit/turret.png)
 
 ## Components
 
-For a list of all used components see the [components](hardware/components.md) section.
+For a list of all used components see the [components](components.md) section.
 
 ## Further information's
 
 All 3D-Models were done with Fusion360 and can be found on GitHub.
-For more information's about controlling the turrets via controller and software solutions please look [here](controller/code-references/hardware/servo.md).
+For more information's about controlling the turrets via controller and software solutions please look [here](../controller/code-references/hardware/servo.md).
 
 
 [^1]: **Mini Turret** from **Cosantoir**, source: [www.thingiverse.com/thing:3181636](https://www.thingiverse.com/thing:3181636)

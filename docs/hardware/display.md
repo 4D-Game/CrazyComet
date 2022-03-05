@@ -2,9 +2,9 @@
 
 The name of the teams and the points of every team as well as the winner is shown on a display. Each successful hit is accentuated by a sound effect. During the game, the melody ["Awakening Game Polychord phase"](https://freesound.org/people/SSS_Samples/sounds/360906/) and at the end, the song ["Jingle_Win_00"](https://freesound.org/people/LittleRobotSoundFactory/sounds/270402/) is played.
 
-![Display](hardware/pictures/display.jpeg){ align=left width="300"}
+![Display](/assets/hardware/pictures/display.jpeg){ align=left width="300"}
 
-![Display connection](hardware/pictures/displays.jpeg){ align=right width="355" }
+![Display connection](/assets/hardware/pictures/displays.jpeg){ align=right width="355" }
 
 ## Functionality
 
@@ -12,7 +12,7 @@ The displays are controlled by a Raspberry Pi. For this game two 2.2 TFT SPI 240
 
 The USB sound-card must be connected directly to the USB port Raspberry Pi. Loudspeaker can then be connected to the sound card using a 3.5 mm audio jack. Every Sound-effect used in this game was taken from [freesound.org](https://freesound.org/).
 
-See the software documentation for information about controlling the [displays](https://4d-game.github.io/Gamecontrol/code-references/hardware/display_hal/) or [audio](https://4d-game.github.io/Gamecontrol/code-references/hardware/sound_hal/).
+See the software documentation for information about controlling the [displays](../gamecontrol/code-references/hardware/display_hal.md) or [audio](../gamecontrol/code-references/hardware/sound_hal.md).
 
 ## Technical characteristics
 
@@ -28,16 +28,16 @@ See the software documentation for information about controlling the [displays](
 
 ### Circuit (connection to Raspberry Pi)
 
-![Display circuit](hardware/circuit/display.png)
+![Display circuit](/assets/hardware/circuit/display.png)
 
 ### 3D-Model of Display bracket
 
-![Display bracket](hardware/models/display/display_mount.png)
+![Display bracket](/assets/hardware/models/display/display_mount.png)
 
 
 ## Components
 
-For a list of all used components see the [components](hardware/components.md) section.
+For a list of all used components see the [components](components.md) section.
 
 ## Further informations
 
