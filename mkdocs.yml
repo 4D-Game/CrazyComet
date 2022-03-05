@@ -1,0 +1,128 @@
+site_name: ECE Project - Crazy Comet
+nav:
+  - Home:
+      - Instructions: index.md
+      - Setup: setup.md
+  - Working on this Project:
+      - Game Concept: game_concept.md
+      - Coding Style:
+          - Python: coding-style/python.md
+          - GIT: coding-style/git.md
+      - Documentation: documentation.md
+  - Game Code:
+      - Controller:
+          - Overview: controller/index.md
+          - Setup: controller/setup.md
+          - Config file: controller/config-file.md
+          - Code References:
+              - Main: controller/code-references/main.md
+              - Controls:
+                  - Blaster: controller/code-references/controls/blaster.md
+                  - LEDs: controller/code-references/controls/leds.md
+                  - Ready: controller/code-references/controls/ready.md
+                  - Turrets: controller/code-references/controls/turrets.md
+              - Hardware:
+                  - HAL: controller/code-references/hardware/hal.md
+                  - LED: controller/code-references/hardware/led_hal.md
+                  - Servo: controller/code-references/hardware/servo.md
+          - Known Issues: gamecontrol/known-issues.md
+      - Gamecontrol:
+          - Overview: gamecontrol/index.md
+          - Gamecontrol Setup: gamecontrol/setup.md
+          - Display Setup: gamecontrol/display-setup.md
+          - Config file: gamecontrol/config-file.md
+          - Code References:
+              - Main: gamecontrol/code-references/main.md
+              - Display: gamecontrol/code-references/display.md
+              - Controls:
+                  - Tower: gamecontrol/code-references/controls/tower.md
+              - Hardware:
+                  - HAL: gamecontrol/code-references/hardware/hal.md
+                  - Display: gamecontrol/code-references/hardware/display_hal.md
+                  - Sound: gamecontrol/code-references/hardware/sound_hal.md
+                  - Stepper: gamecontrol/code-references/hardware/stepper_hal.md
+          - Known Issues: gamecontrol/known-issues.md
+  - Game Hardware:
+      - Overview: hardware/index.md
+      - Tower: hardware/tower.md
+      - Turrets: hardware/turrets.md
+      - Displays: hardware/display.md
+      - Components: hardware/components.md
+  - SDK:
+      - Getting Started: sdk/index.md
+      - Controller:
+          - Getting Started: sdk/controller-sdk/index.md
+          - Key Maps: sdk/controller-sdk/key-maps.md
+          - Config File: sdk/controller-sdk/config-file.md
+      - Gamecontrol:
+          - Getting Started: sdk/gamecontrol-sdk/index.md
+          - Config File: sdk/gamecontrol-sdk/config-file.md
+      - Passive:
+          - Getting Started: sdk/passive-sdk/index.md
+          - Config File: sdk/gamecontrol-sdk/config-file.md
+      - Examples:
+          - LED Test Game: sdk/examples/led-test-game.md
+      - Code References:
+          - GameTemplate: sdk/code-references/game.md
+          - GameIO: sdk/code-references/game-io.md
+          - Players: sdk/code-references/players.md
+          - Controller:
+              - Game: sdk/code-references/controller/game.md
+              - inputs:
+                  Input: sdk/code-references/controller/input.md
+                  Joystick: sdk/code-references/controller/joystick.md
+                  Switch: sdk/code-references/controller/switch.md
+              - key_map: sdk/code-references/controller/key_map.md
+          - Gamecontrol:
+              - Game: sdk/code-references/gamecontrol/game.md
+          - Passive:
+              - Game: sdk/code-references/passive/game.md
+
+repo_url: https://github.com/4D-Game/4D-Game.github.io
+repo_name: 'CrazyComet'
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.top
+  palette:
+    # - scheme: default
+    #   primary: light blue
+    #   toggle:
+    #     icon: material/toggle-switch-off-outline
+    #     name: Switch to dark mode
+    - scheme: slate
+      primary: light blue
+      # toggle:
+      #   icon: material/toggle-switch
+      #   name: Switch to light mode
+
+plugins:
+  - search
+  - mermaid2:
+      arguments:
+        theme: 'dark'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight
+  - attr_list
+  - md_in_html
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - footnotes
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - attr_list
+  - md_in_html
