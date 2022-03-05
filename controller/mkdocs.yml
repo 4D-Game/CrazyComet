@@ -1,0 +1,70 @@
+site_name: Crazy Comet - Controller
+site_url: https://4d-game.github.io/Controller
+
+nav:
+  - Home: https://4d-game.github.io
+  - Working on this Project: https://4d-game.github.io/game_concept/
+  - Game Code:
+      - Controller:
+          - Overview: index.md
+          - Setup: setup.md
+          - Config file: config-file.md
+          - Code References:
+              - Main: code-references/main.md
+              - Controls:
+                  - Blaster: code-references/controls/blaster.md
+                  - LEDs: code-references/controls/leds.md
+                  - Ready: code-references/controls/ready.md
+                  - Turrets: code-references/controls/turrets.md
+              - Hardware:
+                  - HAL: code-references/hardware/hal.md
+                  - LED: code-references/hardware/led_hal.md
+                  - Servo: code-references/hardware/servo.md
+          - Known Issues: known-issues.md
+      - Gamecontrol: https://4d-game.github.io/Gamecontrol/
+  - Game Hardware: https://4d-game.github.io/Hardware
+  - SDK: https://4d-game.github.io/sdk/
+
+repo_url: https://github.com/4D-Game/Controller
+repo_name: 4D-Game/Controller
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  features:
+    - navigation.tabs
+    - navigation.top
+  palette:
+    # - scheme: default
+    #   primary: light blue
+    #   toggle:
+    #     icon: material/toggle-switch-off-outline
+    #     name: Switch to dark mode
+    - scheme: slate
+      primary: light blue
+      # toggle:
+      #   icon: material/toggle-switch
+      #   name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings:
+      watch:
+        - src
+  - mermaid2:
+      arguments:
+        theme: 'dark'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - attr_list
+  - md_in_html

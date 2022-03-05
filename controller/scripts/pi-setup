@@ -1,0 +1,51 @@
+#!/bin/bash
+
+REL_PATH="$(dirname `which $0`)/.."
+PROJECT_PATH="$(cd $REL_PATH; pwd -P)"
+
+echo "Updatet packages ---------------------------------------------------------"
+sudo apt update
+sudo apt upgrade -y
+echo ""
+
+echo "Initialize Submodule -----------------------------------------------------"
+git submodule init
+git submodule update
+echo ""
+
+echo "Setup Shell environment --------------------------------------------------"
+echo "export PYTHONPATH=$PROJECT_PATH/src:$PROJECT_PATH/lib/sdk" >> ~/.profile
+source ~/.profile
+echo ""
+
+# Install XBox360 controller support
+# sudo apt install xboxdrv -y
+# echo 'options bluetooth disable_ertm=Y' | sudo tee -a /etc/modprobe.d/bluetooth.conf
+
+# Install XBox Wireless Controller
+# sudo apt-get install bluetooth bluez blueman
+
+echo "Install Python and Pip ---------------------------------------------------"
+sudo apt install python3 python3-pip -y
+pip3 install -Ur requirements.txt
+echo ""
+
+echo "Install gpiozero ---------------------------------------------------"
+sudo apt-get install python3-gpiozero -y
+sudo apt-get install python3-pigpio -y
+sleep 1
+echo -e "\nenable pigpiod"
+sudo systemctl enable pigpiod
+sudo systemctl restart pigpiod
+echo ""
+
+# echo "Install display ---------------------------------------------------"
+# sudo apt-get update
+# sudo pip3 install Adafruit-Blinka
+# sudo pip3 install adafruit-circuitpython-rgb-display
+# sudo apt-get install python3-pil
+# echo ""
+
+echo ""
+echo "!!! Please aktivate SPI in your /boot/config.txt !!!"
+
