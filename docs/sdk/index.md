@@ -131,9 +131,9 @@ You can also have an element in your game that get's all information but doesn't
 
 To learn how to get started with the different parts of the sdk see the following sections:
 
-- [Controller - Getting Started](controller-sdk/index.md)
-- [Gamecontrol - Getting Started](gamecontrol-sdk/index.md)
-- [Passive - Getting Started](passive-sdk/index.md)
+- [Controller - Getting Started](sdk/controller-sdk/index.md)
+- [Gamecontrol - Getting Started](sdk/gamecontrol-sdk/index.md)
+- [Passive - Getting Started](sdk/passive-sdk/index.md)
 
 [^1]: Tested with 8 but it should work with more.
 [^2]: Only tested with one.

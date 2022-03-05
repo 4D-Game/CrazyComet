@@ -1,10 +1,10 @@
 # Display and Sound module
 
-The name of the teams and the points of every team as well as the winner is shown on a display. Each successful hit is accentuated by a sound effect. During the game, the melody ["Awakening Game Polychord phase"](https://freesound.org/people/SSS_Samples/sounds/360906/) and at the end, the song ["Jingle_Win_00"](https://freesound.org/people/LittleRobotSoundFactory/sounds/270402/) is played. 
+The name of the teams and the points of every team as well as the winner is shown on a display. Each successful hit is accentuated by a sound effect. During the game, the melody ["Awakening Game Polychord phase"](https://freesound.org/people/SSS_Samples/sounds/360906/) and at the end, the song ["Jingle_Win_00"](https://freesound.org/people/LittleRobotSoundFactory/sounds/270402/) is played.
 
-![Display](pictures/display.jpeg){ align=left width="300"}
+![Display](hardware/pictures/display.jpeg){ align=left width="300"}
 
-![Display connection](pictures/displays.jpeg){ align=right width="355" }
+![Display connection](hardware/pictures/displays.jpeg){ align=right width="355" }
 
 ## Functionality
 
@@ -28,16 +28,16 @@ See the software documentation for information about controlling the [displays](
 
 ### Circuit (connection to Raspberry Pi)
 
-![Display circuit](circuit/display.png)
+![Display circuit](hardware/circuit/display.png)
 
 ### 3D-Model of Display bracket
 
-![Display bracket](models/display/display_mount.png)
+![Display bracket](hardware/models/display/display_mount.png)
 
 
 ## Components
 
-For a list of all used components see the [components](components.md) section.
+For a list of all used components see the [components](hardware/components.md) section.
 
 ## Further informations
 

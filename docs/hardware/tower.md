@@ -3,9 +3,9 @@
 
 The tower is the central element of the playing field. It is used to move the comets around the playing field so every player has a chance to hit them.
 
-![View from the top](pictures/tower_top_view.jpeg)
+![View from the top](hardware/pictures/tower_top_view.jpeg)
 
-![View from the side](pictures/tower_side.jpeg)
+![View from the side](hardware/pictures/tower_side.jpeg)
 
 ## Functionality
 
@@ -20,22 +20,22 @@ The tower consists of a base and an arm with a comet at each end. The arm can be
 
 ### 3D-Model
 
-![CAD model of the tower](models/tower/tower_final.png)
+![CAD model of the tower](hardware/models/tower/tower_final.png)
 
-![CAD sketch of the tower](models/tower/tower_final_sketch.png)
+![CAD sketch of the tower](hardware/models/tower/tower_final_sketch.png)
 
 ### Circuit (connection to Raspberry Pi)
 
-![Middle Tower circuit](circuit/tower.png)
+![Middle Tower circuit](hardware/circuit/tower.png)
 
 For the connection between motors, motor shield and Raspberry Pi see the [Adafruit documentation](https://learn.adafruit.com/adafruit-dc-and-stepper-motor-hat-for-raspberry-pi/stacking-hats)
 
 ## Components
 
-For a list of all used components see the [components](components.md) section.
+For a list of all used components see the [components](hardware/components.md) section.
 
 ## Further information
 
 All 3D-Models were done with Fusion360 and can be found on GitHub.
-For information about controlling the tower via controller and software solutions please look [here](https://4d-game.github.io/Gamecontrol/code-references/hardware/stepper_hal/)
+For information about controlling the tower via controller and software solutions please look [here](gamecontrol/code-references/hardware/stepper_hal.md)
 

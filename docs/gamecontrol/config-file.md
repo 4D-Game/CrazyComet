@@ -1,6 +1,6 @@
 # Config file
 
-The CrazyComet game adds some more parameters to the `config.toml` as already defined in the [SDK documentation](https://4d-game.github.io/sdk/gamecontrol-sdk/config-file/).
+The CrazyComet game adds some more parameters to the `config.toml` as already defined in the [SDK documentation](sdk/gamecontrol-sdk/config-file.md).
 
 !!! INFO
     The structure of the config file should be the same for gamecontrol and display

@@ -3,11 +3,11 @@
 The *Controller* repository contains the code for the Raspberry Pi's which control the different game figures (e.g. the turrets). In the following those Raspberry Pi's are called **Controller**. Each Controller can get an id by setting the `seat` variable in the *config.toml*.
 
 !!! NOTE
-    The id of the controller must also be named in the `seats` variable of your [Gamecontrol](https://4d-game.github.io/Gamecontrol/).
+    The id of the controller must also be named in the `seats` variable of your [Gamecontrol](gamecontrol/index.md).
 
 ## Structure
 
-The entry point of the game is the `CrazyComet` class in *src/main.py*. This is a subclass of `Game` from `game_sdk.controller` (See the [sdk documentation](https://4d-game.github.io/sdk)). To start the game `CrazyComet.run()` is executed.
+The entry point of the game is the `CrazyComet` class in *src/main.py*. This is a subclass of `Game` from `game_sdk.controller` (See the [sdk documentation](sdk/index.md)). To start the game `CrazyComet.run()` is executed.
 
 Furthermore the *src* folder consist of a *hardware* and *controls* folder, which will be explained below.
 
@@ -27,7 +27,7 @@ As defined in the `HAL` base class, every `HAL` class should have the following 
 
 This folder contains classes, which interact directly with the game (eg. responding to gamepad inputs).
 
-Classes interacting with the gamepad should always be subclasses of an `Input` class (See the [sdk documentation](https://4d-game.github.io/sdk/controller-sdk/code-references/input/)).
+Classes interacting with the gamepad should always be subclasses of an `Input` class (See the [sdk documentation](sdk/code-references/controller/input.md)).
 
 To register an `Input` class to the **game sdk** it should be instanciated in the `CrazyComet` class. There it is added to the dictionary `controls` with the desired `KeyCode` or `JoystickCode` as key.
 
