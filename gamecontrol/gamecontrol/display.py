@@ -11,8 +11,8 @@ from asyncio import sleep
 from PIL import Image, ImageDraw, ImageFont
 from adafruit_rgb_display import ili9341
 from game_sdk.passive.game import Game
-from hardware.display_hal import DisplayHAL
-from hardware.sound_hal import SoundHAL
+from gamecontrol.hardware.display_hal import DisplayHAL
+from gamecontrol.hardware.sound_hal import SoundHAL
 import logging
 
 class Display(Game):

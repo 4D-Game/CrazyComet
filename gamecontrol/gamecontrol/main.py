@@ -11,7 +11,7 @@ from gpiozero.pins.pigpio import PiGPIOFactory
 
 from game_sdk.game_io import GameState
 from game_sdk.gamecontrol import Game
-from controls.tower import TowerControl
+from gamecontrol.controls.tower import TowerControl
 
 
 class CrazyComet(Game):

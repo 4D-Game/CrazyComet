@@ -1,3 +1,3 @@
 # Blaster
 
-:::controls.leds
+:::controller.controls.leds

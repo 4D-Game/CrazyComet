@@ -2,7 +2,7 @@ import logging
 
 from gpiozero import Servo
 from gpiozero.pins.native import NativeFactory
-from hardware.hal import HAL
+from controller.hardware.hal import HAL
 
 
 class ServoHAL(HAL):

@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from hardware.led_hal import RgbLedHAL
+from controller.hardware.led_hal import RgbLedHAL
 
 
 class LEDControl():

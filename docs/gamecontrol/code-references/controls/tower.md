@@ -1,3 +1,3 @@
 # Tower
 
-:::controls.tower
+:::gamecontrol.controls.tower

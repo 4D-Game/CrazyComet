@@ -1,3 +1,3 @@
 # Servo
 
-:::hardware.servo
+:::controller.hardware.servo

@@ -1,3 +1,3 @@
 # Turrets
 
-:::controls.turrets
+:::controller.controls.turrets

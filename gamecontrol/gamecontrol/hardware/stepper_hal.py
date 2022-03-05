@@ -9,7 +9,7 @@ from gpiozero.pins.pigpio import PiGPIOFactory
 
 from adafruit_motor import stepper as STEPPER
 from adafruit_motorkit import MotorKit
-from hardware.hal import HAL
+from gamecontrol.hardware.hal import HAL
 
 class StepperHAL(HAL):
     """

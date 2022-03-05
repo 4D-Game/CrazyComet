@@ -14,10 +14,10 @@ from game_sdk.controller import Game
 from game_sdk.game import LogLevel
 from game_sdk.controller.key_map import JoystickCode, KeyCode
 
-from controls.blaster import Blaster
-from controls.turrets import HorizontalTurretControl, VerticalTurretControl
-from controls.leds import LEDControl
-from controls.ready import ReadyControl
+from controller.controls.blaster import Blaster
+from controller.controls.turrets import HorizontalTurretControl, VerticalTurretControl
+from controller.controls.leds import LEDControl
+from controller.controls.ready import ReadyControl
 
 
 class CrazyComet(Game):

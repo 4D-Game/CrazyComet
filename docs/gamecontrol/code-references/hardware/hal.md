@@ -1,3 +1,3 @@
 # HAL
 
-:::hardware.hal
+:::gamecontrol.hardware.hal

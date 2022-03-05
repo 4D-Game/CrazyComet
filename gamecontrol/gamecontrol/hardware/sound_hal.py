@@ -1,6 +1,6 @@
 import logging
 from pygame import mixer
-from hardware.hal import HAL
+from gamecontrol.hardware.hal import HAL
 
 class SoundHAL(HAL):
     """

@@ -1,8 +1,7 @@
 from asyncio import sleep, create_task
 from asyncio.tasks import Task
 from typing import List, Callable
-from hardware import servo
-from hardware.servo import ServoHAL, ServoInvertedHAL
+from controller.hardware.servo import ServoHAL, ServoInvertedHAL
 from game_sdk.controller.inputs import Joystick
 import logging
 

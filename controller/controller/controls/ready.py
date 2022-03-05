@@ -2,7 +2,7 @@ import asyncio
 from asyncio import sleep, Lock
 import logging
 from game_sdk.controller.inputs import Switch
-from controls.leds import LEDControl
+from controller.controls.leds import LEDControl
 
 
 class ReadyControl(Switch):

@@ -1,3 +1,3 @@
 # StepperHAL
 
-:::hardware.display_hal
+:::gamecontrol.hardware.display_hal

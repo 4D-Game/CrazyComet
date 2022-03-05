@@ -1,3 +1,3 @@
 # StepperHAL
 
-:::hardware.sound_hal
+:::gamecontrol.hardware.sound_hal

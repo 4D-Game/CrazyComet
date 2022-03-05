@@ -32,7 +32,7 @@ git submodule update
 Add the `src` and `lib/sdk` folder to your `PYTHONPATH`
 
 ```bash
-export PYTHONPATH="$(pwd)/src:$(pwd)/lib/sdk"
+export PYTHONPATH="$(pwd)/controller:$(pwd)/sdk"
 ```
 
 #### Python Dependencies

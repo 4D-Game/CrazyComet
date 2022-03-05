@@ -1,3 +1,3 @@
 # Blaster
 
-:::controls.ready
+:::controller.controls.ready

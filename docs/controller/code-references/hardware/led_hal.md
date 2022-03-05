@@ -1,3 +1,3 @@
 # Servo
 
-:::hardware.led_hal
+:::controller.hardware.led_hal

@@ -5,7 +5,7 @@ import board
 import digitalio
 from PIL import Image, ImageDraw, ImageFont
 from adafruit_rgb_display import ili9341
-from hardware.hal import HAL
+from gamecontrol.hardware.hal import HAL
 
 class DisplayHAL(HAL):
     """

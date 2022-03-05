@@ -4,7 +4,7 @@ import random
 
 from typing import Literal
 from adafruit_motor import stepper as STEPPER
-from hardware.stepper_hal import EncoderStepperHAL, StepperHAL
+from gamecontrol.hardware.stepper_hal import EncoderStepperHAL, StepperHAL
 
 class TowerControl():
     """
